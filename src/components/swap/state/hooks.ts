@@ -118,10 +118,7 @@ export function useDerivedSwapInfo(): {
   v1Trade: Trade | undefined
 } {
   const { t } = useTranslation()
-
-  // const {account} = useActiveWeb3React()
-    console.log('useActiveWeb3React', useActiveWeb3React());
-    const account = useSelector(getEthAccount) || undefined
+  const account = useSelector(getEthAccount) || undefined
 
   const toggledVersion = useToggledVersion()
 
