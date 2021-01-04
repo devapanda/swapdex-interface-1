@@ -6,7 +6,7 @@ import { ColumnWide } from '../../common/column_wide';
 import { Content } from '../common/content_wrapper';
 import Pool  from '../../swap/pool';
 import { Provider } from 'react-redux'
-import store from '../../swap/state'
+import store from '../../../store'
 import ThemeProvider, { FixedGlobalStyle, ThemedGlobalStyle } from '../../swap/theme'
 import getLibrary from '../../swap/utils/getLibrary'
 import { NetworkContextName } from '../../swap/constants'
