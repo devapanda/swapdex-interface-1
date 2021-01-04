@@ -1,9 +1,9 @@
-// the Swapdex Default token list lives here
-export const DEFAULT_TOKEN_LIST_URL = 'https://raw.githubusercontent.com/69th-byte/swapdex-default-token-list/main/build/swapdex-default.tokenlist.json'
+// the Uniswap Default token list lives here
+export const DEFAULT_TOKEN_LIST_URL = 'tokens.uniswap.eth'
 
 export const DEFAULT_LIST_OF_LISTS: string[] = [
   DEFAULT_TOKEN_LIST_URL,
-  'tokens.uniswap.eth',
+  'https://raw.githubusercontent.com/69th-byte/swapdex-default-token-list/main/build/swapdex-default.tokenlist.json',
   't2crtokens.eth', // kleros
   'tokens.1inch.eth', // 1inch
   'synths.snx.eth',

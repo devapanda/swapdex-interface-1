@@ -15,6 +15,11 @@ import { CheckWalletStateModalContainer } from '../../common/check_wallet_state_
 import {Web3ReactContextInterface} from "@web3-react/core/dist/types";
 import {Web3Provider} from "@ethersproject/providers";
 import {ChainId} from "@uniswap/sdk";
+import ApplicationUpdater from '../../swap/state/application/updater'
+import ListsUpdater from '../../swap/state/lists/updater'
+import MulticallUpdater from '../../swap/state/multicall/updater'
+import TransactionUpdater from '../../swap/state/transactions/updater'
+import UserUpdater from '../../swap/state/user/updater'
 
 const Web3ProviderNetwork = createWeb3ReactRoot(NetworkContextName);
 
@@ -40,6 +45,18 @@ const CenteredContent = styled(Content as any)`
     background-color : #EEEEEE;
 `;
 
+function Updaters() {
+  return (
+    <>
+      <ListsUpdater />
+      <UserUpdater />
+      <ApplicationUpdater />
+      <TransactionUpdater />
+      <MulticallUpdater />
+    </>
+  )
+}
+
 const SwapPage = () => {
     return (
         <ThemeProvider>
@@ -48,6 +65,7 @@ const SwapPage = () => {
                 <Web3ReactProvider getLibrary={getLibrary}>
                     <Web3ProviderNetwork getLibrary={getLibrary}>
                         <Provider store={store}>
+                        <Updaters />
                             <CenteredContent>
                                 <Swap/>
                             </CenteredContent>

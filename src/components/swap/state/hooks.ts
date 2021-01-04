@@ -11,7 +11,7 @@ import { useCurrency } from '../hooks/Tokens'
 import { useTradeExactIn, useTradeExactOut } from '../hooks/Trades'
 import useParsedQueryString from '../hooks/useParsedQueryString'
 import { isAddress } from '../utils'
-import { AppDispatch, AppState } from './index'
+import { AppDispatch, AppState } from '../../../store'
 import { useCurrencyBalances } from './wallet/hooks'
 import { replaceSwapState, selectCurrency, setRecipient, switchCurrencies, typeInput } from './actions'
 import { SwapField, SwapState } from '../../../util/types'
@@ -118,10 +118,7 @@ export function useDerivedSwapInfo(): {
   v1Trade: Trade | undefined
 } {
   const { t } = useTranslation()
-
-  // const {account} = useActiveWeb3React()
-    console.log('useActiveWeb3React', useActiveWeb3React());
-    const account = useSelector(getEthAccount) || undefined
+  const account = useSelector(getEthAccount) || undefined
 
   const toggledVersion = useToggledVersion()
 
