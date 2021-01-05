@@ -63,7 +63,7 @@ export default async function getTokenList(
         }, '') ?? 'unknown error'
       throw new Error(`Token list failed validation: ${validationErrors}`)
     }
-    return json
+    return json as TokenList
   }
   throw new Error('Unrecognized list URL protocol.')
 }

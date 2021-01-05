@@ -105,8 +105,6 @@ export default function Swap() {
         }
     });
 
-    console.log('ACCOUNT SELECTED', account);
-
     // toggle wallet when disconnected
     const toggleWalletModal = useWalletModalToggle()
 
