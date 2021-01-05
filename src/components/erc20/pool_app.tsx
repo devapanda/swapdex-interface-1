@@ -15,7 +15,6 @@ const toolbar = <ToolbarContentContainer />;
 
 const Pool = lazy(() => import('./pages/pool'));
 
-
 const PoolApp = () => {
     const themeColor = useSelector(getERC20Theme);
     return (

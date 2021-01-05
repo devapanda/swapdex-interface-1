@@ -10,42 +10,25 @@ import store from '../../../store'
 import ThemeProvider, { FixedGlobalStyle, ThemedGlobalStyle } from '../../swap/theme'
 import getLibrary from '../../swap/utils/getLibrary'
 import { NetworkContextName } from '../../swap/constants'
-
-
-
-const ColumnWideMyWallet = styled(ColumnWide)`
-    margin-left: 0;
-    &:last-child {
-        margin-left: 0;
-    }
-    @media (max-width: ${themeBreakPoints.sm}) {
-        width: 100%;
-    }
-    @media (min-width: ${themeBreakPoints.md}) {
-        max-width: 100%;
-    }
-    @media (min-width: ${themeBreakPoints.lg}) {
-        max-width: 60%;
-    }
-`;
-
-const CenteredContent = styled(Content as any)`
-    align-items: center;
-    justify-content: center;
-    background-color : #EEEEEE;
-`;
+import { CheckWalletStateModalContainer } from '../../common/check_wallet_state_modal_container';
+import { Web3ProviderNetwork, ColumnWideMyWallet, CenteredContent, Updaters } from './swap'
 
 const PoolPage = () => (
-    <ThemeProvider>
-        <ThemedGlobalStyle />
-        <Web3ReactProvider getLibrary={getLibrary}>
-        <Provider store={store}>
-                <CenteredContent>
-                    <Pool />
-                </CenteredContent>
-            </Provider>
-        </Web3ReactProvider>
-    </ThemeProvider>
+  <ThemeProvider>
+      <ThemedGlobalStyle/>
+      <CheckWalletStateModalContainer>
+          <Web3ReactProvider getLibrary={getLibrary}>
+              <Web3ProviderNetwork getLibrary={getLibrary}>
+                  <Provider store={store}>
+                  <Updaters />
+                      <CenteredContent>
+                          <Pool />
+                      </CenteredContent>
+                  </Provider>
+              </Web3ProviderNetwork>
+          </Web3ReactProvider>
+      </CheckWalletStateModalContainer>
+  </ThemeProvider>
 );
 
 export {PoolPage as default };

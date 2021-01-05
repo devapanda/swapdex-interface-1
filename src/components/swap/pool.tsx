@@ -1,4 +1,4 @@
-import React, { useContext, useMemo } from 'react'
+import React, { useContext, useMemo, useEffect } from 'react'
 import { ThemeContext } from 'styled-components'
 import { Pair } from '@uniswap/sdk'
 import { Link } from 'react-router-dom'
@@ -20,9 +20,29 @@ import { usePairs } from './data/Reserves'
 import { toV2LiquidityToken, useTrackedTokenPairs } from './state/user/hooks'
 import {Dots, Wrapper} from './styleds'
 
+import {InjectedConnector} from "@web3-react/injected-connector";
+import {Web3Provider} from "@ethersproject/providers";
+import {useWeb3React} from "@web3-react/core";
+
+const injectedConnector = new InjectedConnector({
+    supportedChainIds: [
+        1, // Mainet
+        3, // Ropsten
+        4, // Rinkeby
+        5, // Goerli
+        42, // Kovan
+    ],
+})
+
 export default function Pool() {
   const theme = useContext(ThemeContext)
-  const { account } = useActiveWeb3React()
+  const { chainId, account, activate, active } = useWeb3React<Web3Provider>()
+
+  useEffect(() => {
+      if ( !account ) {
+          activate(injectedConnector)
+      }
+  });
 
   // fetch the user's balances of all tracked V2 LP tokens
   const trackedTokenPairs = useTrackedTokenPairs()
