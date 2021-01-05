@@ -440,27 +440,6 @@ export default function Swap() {
     }
   `
 
-    /*
-     * @Note:   There seems to be state/rerender issues with the contained input
-     *          when using this component. div workaround has been applied for MVP.
-     *
-    const InputPanelWrapper = styled.div`
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-
-    ${({theme}) => theme.mediaWidth.upToMedium`
-      flex-direction: column;
-    `};
-  `;
-
-    const INPUT_PANEL_STYLE = {
-        'display': 'flex',
-        'flex-direction': theme.mediaWidth.upToMedium ? 'row',
-        'justify-content': 'center'
-    };
-
-     */
     /*  const isListed = baseToken ? baseToken.listed : true;
     const msg = 'Token inserted by User. Please proceed with caution and do your own research!';*/
     return (
