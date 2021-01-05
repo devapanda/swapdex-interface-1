@@ -10,16 +10,6 @@ import ReactGA from 'react-ga'
 import {Text} from 'rebass'
 import {ArrowDown} from 'react-feather'
 import {CurrencyAmount, JSBI, Token, Trade} from '@uniswap/sdk'
-import {
-    getEthAccount,
-    getEthBalance,
-    getEthInUsd,
-    getTokenBalances,
-    getTokensPrice,
-    getWallet,
-    getWeb3State,
-    getWethTokenBalance,
-} from '../../store/selectors';
 
 import {ButtonError, ButtonLight, ButtonPrimary, ButtonConfirmed} from './Button'
 import Modal from "./Modal";
@@ -40,7 +30,6 @@ import {ArrowWrapper, BottomGrouping, SwapCallbackError, Wrapper} from './styled
 import TradePrice from './TradePrice'
 import TokenWarningModal from './TokenWarningModal'
 import ProgressSteps from './ProgressSteps'
-import {useActiveWeb3React} from './hooks'
 import {useExpertModeManager, useUserDeadline, useUserSlippageTolerance} from './state/user/hooks'
 import {useCurrency} from './hooks/Tokens'
 import useENSAddress from './hooks/useENSAddress'
@@ -94,11 +83,10 @@ export default function Swap() {
         setDismissTokenWarning(true)
     }, [])
 
-    //const account = useSelector(getEthAccount)
     const theme = useTheme();
 
     const { chainId, account, activate, active } = useWeb3React<Web3Provider>()
-
+    
     useEffect(() => {
         if ( !account ) {
             activate(injectedConnector)
