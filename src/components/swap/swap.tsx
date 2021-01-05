@@ -431,6 +431,9 @@ export default function Swap() {
   `
 
     /*
+     * @Note:   There seems to be state/rerender issues with the contained input
+     *          when using this component. div workaround has been applied for MVP.
+     *
     const InputPanelWrapper = styled.div`
     display: flex;
     flex-direction: row;
@@ -446,19 +449,6 @@ export default function Swap() {
         'display': 'flex',
         'flex-direction': 'row',
         'justify-content': 'center'
-    };
-
-    const InputPanelWrapper = props => {
-        const style = {
-            'display': 'flex',
-            'flex-direction': 'row',
-            'justify-content': 'center'
-        };
-        return (
-            <div>
-                {props.children}
-            </div>
-        );
     };
 
 
