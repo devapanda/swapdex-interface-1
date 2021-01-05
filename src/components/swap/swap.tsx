@@ -77,6 +77,16 @@ const injectedConnector = new InjectedConnector({
     ],
 })
 
+const InputPanelWrapper = styled.div`
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+
+    ${({theme}) => theme.mediaWidth.upToMedium`
+      flex-direction: column;
+    `};
+  `;
+
 export default function Swap() {
     const loadedUrlParams = useDefaultsFromURLSearch();
 
@@ -443,15 +453,14 @@ export default function Swap() {
       flex-direction: column;
     `};
   `;
-     */
 
     const INPUT_PANEL_STYLE = {
         'display': 'flex',
-        'flex-direction': 'row',
+        'flex-direction': theme.mediaWidth.upToMedium ? 'row',
         'justify-content': 'center'
     };
 
-
+     */
     /*  const isListed = baseToken ? baseToken.listed : true;
     const msg = 'Token inserted by User. Please proceed with caution and do your own research!';*/
     return (
@@ -473,24 +482,7 @@ export default function Swap() {
                     onDismiss={handleConfirmDismiss}
                 />
 
-                {/*
-                <div>
-                    <CurrencyInputPanel
-                        label={independentField === SwapField.OUTPUT && !showWrap && trade ? 'From (estimated)' : 'From'}
-                        value={formattedAmounts[SwapField.INPUT]}
-                        showMaxButton={!atMaxAmountInput}
-                        currency={currencies[SwapField.INPUT]}
-                        onUserInput={handleTypeInput}
-                        onMax={handleMaxInput}
-                        onCurrencySelect={handleInputSelect}
-                        otherCurrency={currencies[SwapField.OUTPUT]}
-                        side='left'
-                        id="swap-currency-input-test"
-                    />
-                </div>
-                */}
-
-                <div style={INPUT_PANEL_STYLE}>
+                <InputPanelWrapper>
                     <CurrencyInputPanel
                         label={independentField === SwapField.OUTPUT && !showWrap && trade ? 'From (estimated)' : 'From'}
                         value={formattedAmounts[SwapField.INPUT]}
@@ -578,7 +570,7 @@ export default function Swap() {
                             </AutoColumn>
                         </Card>
                     )}
-                </div>
+                </InputPanelWrapper>
                 <RoundedWrapper onClick={() => {
                     if (isMobile) {
                         setModalOpen(true)
@@ -683,16 +675,15 @@ export default function Swap() {
                         {showApproveFlow && <ProgressSteps steps={[approval === ApprovalState.APPROVED]}/>}
                         {isExpertMode && swapErrorMessage ? <SwapCallbackError error={swapErrorMessage}/> : null}
                     </BottomGrouping>
-                    {/*
                     <SlippageMenu
                         rawSlippage={allowedSlippage}
                         setRawSlippage={setUserslippageTolerance}
                         deadline={deadline}
                         setDeadline={setDeadline}
                     />
-                    <AdvancedSwapDetails trade={trade}/>*/}
+                    <AdvancedSwapDetails trade={trade}/>
                 </TransactionDeatailsWrapper>
-                {/*isMobile ?
+                {isMobile ?
                     <Modal isOpen={modalOpen} onDismiss={handleDismissTransactionDetails} maxHeight={90} minHeight={30}>
                         <MobileTransactionDeatailsWrapper>
                             <RoundedWrapper style={{marginTop: '0.25rem'}}
@@ -807,7 +798,7 @@ export default function Swap() {
                             />
                             <AdvancedSwapDetails trade={trade}/>
                         </MobileTransactionDeatailsWrapper>
-                    </Modal> : ''*/}
+                    </Modal> : ''}
             </Wrapper>
             <AssetsWrapper style={{display: 'none'}}></AssetsWrapper>
         </>
