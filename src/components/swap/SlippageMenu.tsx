@@ -121,7 +121,6 @@ export default function SlippageTabs({ rawSlippage, setRawSlippage, deadline, se
     return (
         <AutoColumn gap="md" style={{ marginBottom: '1rem' }}>
             <AutoColumn gap="sm">
-                SELECTED SLIPPED: {rawSlippage}
                 <RowBetween>
                     <TYPE.italic fontWeight={400} fontSize={20} color={theme.text2}>
                         Slippage
