@@ -50,7 +50,7 @@ const Input = styled.input`
   &::-webkit-inner-spin-button {
     -webkit-appearance: none;
   }
-  color: ${({ theme, color }) => (color === 'red' ? theme.red1 : theme.text1)};
+  color: ${({ theme, color }) => (color === 'red' ? theme.red1 : '#7C7C7C')};
   text-align: right;
 `
 
