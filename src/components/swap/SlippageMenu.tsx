@@ -50,7 +50,7 @@ const Input = styled.input`
   &::-webkit-inner-spin-button {
     -webkit-appearance: none;
   }
-  color: ${({ theme, color }) => (color === 'red' ? theme.red1 : theme.text1)};
+  color: ${({ theme, color }) => (color === 'red' ? theme.red1 : '#7C7C7C')};
   text-align: right;
 `
 
@@ -110,7 +110,6 @@ export default function SlippageTabs({ rawSlippage, setRawSlippage, deadline, se
 
     function parseCustomSlippage(value: string) {
         setSlippageInput(value)
-
         try {
             const valueAsIntFromRoundedFloat = Number.parseInt((Number.parseFloat(value) * 100).toString())
             if (!Number.isNaN(valueAsIntFromRoundedFloat) && valueAsIntFromRoundedFloat < 5000) {
@@ -152,10 +151,12 @@ export default function SlippageTabs({ rawSlippage, setRawSlippage, deadline, se
                                 ref={inputRef as any}
                                 placeholder={(rawSlippage / 100).toFixed(2)}
                                 value={slippageInput}
-                                onBlur={() => {
-                                    parseCustomSlippage((rawSlippage / 100).toFixed(2))
+                                onFocus={e => e.target.select()}
+                                onBlur={e => {
+                                    parseCustomSlippage(e.target.value);
+                                    //parseCustomSlippage((rawSlippage / 100).toFixed(2))
                                 }}
-                                onChange={e => parseCustomSlippage(e.target.value)}
+                                onChange={e => setSlippageInput(e.target.value)}
                                 color={!slippageInputIsValid ? 'red' : ''}
                             />
                             <span>%</span>
