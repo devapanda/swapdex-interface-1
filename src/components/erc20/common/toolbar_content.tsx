@@ -205,9 +205,11 @@ const ToolbarContent = (props: Props) => {
         endOptContent = (
             <>
                 {/*  <SettingsContentContainer  className={'settings-dropdown'} /> */}
+                {/*
                 <StyledButton onClick={handleTransakModal} className={'buy-fiat'}>
                     FIAT
                 </StyledButton>
+                */}
                 <StyledLink href="/defi" onClick={handleDefiClick} className={'defi'}>
                     DeFi
                 </StyledLink>
