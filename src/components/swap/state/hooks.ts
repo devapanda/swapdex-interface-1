@@ -138,7 +138,7 @@ export function useDerivedSwapInfo(): {
   const relevantTokenBalances = useCurrencyBalances(account ?? undefined, [
     inputCurrency ?? undefined,
     outputCurrency ?? undefined
-  ])
+  ]);
 
   const isExactIn: boolean = independentField === SwapField.INPUT
   const parsedAmount = tryParseAmount(typedValue, (isExactIn ? inputCurrency : outputCurrency) ?? undefined)
