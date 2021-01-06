@@ -1,12 +1,12 @@
 import { BigNumber } from '@ethersproject/bignumber'
 import { TransactionResponse } from '@ethersproject/providers'
 import { Currency, currencyEquals, ETHER, TokenAmount, WETH } from '@uniswap/sdk'
-import React, { useCallback, useContext, useState } from 'react'
+import React, { useCallback, useContext, useEffect, useState } from 'react'
 import { Plus } from 'react-feather'
 import ReactGA from 'react-ga'
 import { RouteComponentProps } from 'react-router-dom'
 import { Text } from 'rebass'
-import styled, { ThemeContext } from 'styled-components'
+import styled, {useTheme} from 'styled-components'
 import { ButtonError, ButtonLight, ButtonPrimary } from '../Button'
 import { BlueCard, GreyCard, LightCard } from '../Card'
 import { AutoColumn, ColumnCenter } from '../Column'
@@ -38,14 +38,35 @@ import { ConfirmAddModalBottom } from './ConfirmAddModalBottom'
 import { currencyId } from '../utils/currencyId'
 import { PoolPriceBar } from './PoolPriceBar'
 
+import {InjectedConnector} from "@web3-react/injected-connector";
+import {Web3Provider} from "@ethersproject/providers";
+import {useWeb3React} from "@web3-react/core";
+import { Theme } from '../../../themes/commons'
+
+const injectedConnector = new InjectedConnector({
+    supportedChainIds: [
+        1, // Mainet
+        3, // Ropsten
+        4, // Rinkeby
+        5, // Goerli
+        42, // Kovan
+    ],
+})
+
 export default function AddLiquidity({
   match: {
     params: { currencyIdA, currencyIdB }
   },
   history
 }: RouteComponentProps<{ currencyIdA?: string; currencyIdB?: string }>) {
-  const { account, chainId, library } = useActiveWeb3React()
-  const theme = useContext(ThemeContext)
+  const { chainId, account, activate, active, library } = useWeb3React<Web3Provider>()
+
+  useEffect(() => {
+      if ( !account ) {
+          activate(injectedConnector)
+      }
+  });
+  const theme = useTheme()
 
   const currencyA = useCurrency(currencyIdA)
   const currencyB = useCurrency(currencyIdB)
@@ -374,7 +395,7 @@ export default function AddLiquidity({
                   id="add-liquidity-input-tokena"
                   showCommonBases
                 />
-                <Plus size="16" color={theme.text2} style={{ margin: '2rem' }} />
+                <Plus size="16"  style={{ margin: '2rem' }} />
                 <CurrencyInputPanel
                   value={formattedAmounts[MintField.CURRENCY_B]}
                   onUserInput={onFieldBInput}
