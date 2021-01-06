@@ -66,6 +66,16 @@ const injectedConnector = new InjectedConnector({
     ],
 })
 
+const InputPanelWrapper = styled.div`
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+
+    ${({theme}) => theme.mediaWidth.upToMedium`
+      flex-direction: column;
+    `};
+  `;
+
 export default function Swap() {
     const loadedUrlParams = useDefaultsFromURLSearch();
 
@@ -415,16 +425,6 @@ export default function Swap() {
       display: flex;
     }
   `
-
-    const InputPanelWrapper = styled.div`
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-
-    ${({theme}) => theme.mediaWidth.upToMedium`
-      flex-direction: column;
-    `};
-  `;
 
     /*  const isListed = baseToken ? baseToken.listed : true;
     const msg = 'Token inserted by User. Please proceed with caution and do your own research!';*/
