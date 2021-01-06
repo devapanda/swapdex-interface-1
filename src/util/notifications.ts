@@ -50,10 +50,12 @@ export const getOrderSideFromFillEvent = (
         orderSide = makerAssetData === wethAssetData ? OrderSide.Buy : OrderSide.Sell;
     } else {
         for (const market of markets) {
+          try {
             const baseSymbol = market.currencyPair.base;
             const quoteSymbol = market.currencyPair.quote;
             const baseToken = knownTokens.getTokenBySymbol(baseSymbol);
             const quoteToken = knownTokens.getTokenBySymbol(quoteSymbol);
+
             // Make sure all the address's are at lower case
             if (
                 makerTokenAddress.toLowerCase() === baseToken.address.toLowerCase() &&
@@ -70,6 +72,9 @@ export const getOrderSideFromFillEvent = (
                 orderSide = OrderSide.Sell;
                 break;
             }
+          } catch (err) {
+            //
+          }
         }
     }
 
