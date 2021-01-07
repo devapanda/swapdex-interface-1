@@ -54,6 +54,19 @@ const injectedConnector = new InjectedConnector({
     ],
 })
 
+
+const InputPanelsWrapper = styled.div`
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2rem;
+
+    ${({ theme }) => theme.mediaWidth.upToMedium`
+        flex-direction: column;
+      `};
+  `
+
 export default function AddLiquidity({
   match: {
     params: { currencyIdA, currencyIdB }
@@ -317,17 +330,6 @@ export default function AddLiquidity({
     [currencyIdA, history, currencyIdB]
   )
 
-  const InputPanelsWrapper = styled.div`
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    margin-top: 2rem;
-
-    ${({ theme }) => theme.mediaWidth.upToMedium`
-        flex-direction: column;
-      `};
-  `
   const ButtonWrapper = styled.div`
     width: 100%;
     display: flex;
