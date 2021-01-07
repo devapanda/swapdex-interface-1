@@ -232,7 +232,7 @@ export default function FullPositionCard({ pair, border }: PositionCardProps) {
               <ButtonSecondary as={Link} to={`/pool/add/${currencyId(currency0)}/${currencyId(currency1)}`} width="48%">
                 Add
               </ButtonSecondary>
-              <ButtonSecondary as={Link} width="48%" to={`/remove/${currencyId(currency0)}/${currencyId(currency1)}`}>
+              <ButtonSecondary as={Link} width="48%" to={`/pool/remove/${currencyId(currency0)}/${currencyId(currency1)}`}>
                 Remove
               </ButtonSecondary>
             </RowBetween>
