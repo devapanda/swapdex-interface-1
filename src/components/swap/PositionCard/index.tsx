@@ -229,7 +229,7 @@ export default function FullPositionCard({ pair, border }: PositionCardProps) {
               </ExternalLink>
             </AutoRow>
             <RowBetween marginTop="10px">
-              <ButtonSecondary as={Link} to={`/add/${currencyId(currency0)}/${currencyId(currency1)}`} width="48%">
+              <ButtonSecondary as={Link} to={`/pool/add/${currencyId(currency0)}/${currencyId(currency1)}`} width="48%">
                 Add
               </ButtonSecondary>
               <ButtonSecondary as={Link} width="48%" to={`/remove/${currencyId(currency0)}/${currencyId(currency1)}`}>
