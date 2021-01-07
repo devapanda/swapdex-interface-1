@@ -16,6 +16,7 @@ import DoubleCurrencyLogo from '../DoubleLogo'
 import { AddRemoveTabs } from '../NavigationTabs'
 import { MinimalPositionCard } from '../PositionCard'
 import Row, { RowBetween, RowFlat } from '../Row'
+import ThemeProvider, { FixedGlobalStyle, ThemedGlobalStyle } from '../theme'
 
 import { ROUTER_ADDRESS } from '../constants'
 import { PairState } from '../data/Reserves'
@@ -493,6 +494,7 @@ export default function AddLiquidity({
           <MinimalPositionCard showUnwrapped={oneCurrencyIsWETH} pair={pair} />
         </AutoColumn>
       ) : null}
+
     </>
   )
 }
