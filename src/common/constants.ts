@@ -6,6 +6,7 @@ import { ChainId } from '../util/types/swap';
 
 export const ERC20_APP_BASE_PATH = '/erc20';
 export const MARKET_APP_BASE_PATH = '/swap';
+export const POOL_APP_BASE_PATH = '/pool';
 export const LAUNCHPAD_APP_BASE_PATH = '/launchpad';
 export const MARGIN_APP_BASE_PATH = '/margin';
 export const DEFI_APP_BASE_PATH = '/defi';

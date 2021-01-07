@@ -17,13 +17,13 @@ const Tabs = styled.div`
   font-family: 'Montserrat', sans-serif;
   -webkit-box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.2);  /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
   -moz-box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.2);   /* Firefox 3.5 - 3.6 */
-  box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.2); 
-  
+  box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.2);
+
   :hover,
   :focus {
     background-color: #f4f9ff;
   }
-  
+
   ${({ theme }) => theme.mediaWidth.upToMedium`
     width: 100%;
   `};
@@ -51,7 +51,7 @@ const StyledNavLink = styled(NavLink).attrs({
     color: #FFFFFF;
     background-color: #3b5998;
   }
-  
+
   ${({ theme }) => theme.mediaWidth.upToMedium`
     height: 2rem;
   `};

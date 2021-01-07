@@ -80,7 +80,7 @@ export default function Pool() {
         <Wrapper id="pool-page" style={{ display: 'flex', flexDirection: 'column', width: '75%' }}>
           <SwapPoolTabs active={'pool'} />
           <AutoColumn gap="lg" justify="center">
-            <ButtonPrimary id="join-pool-button" as={Link} style={{ padding: 16 }} to="/add/ETH">
+            <ButtonPrimary id="join-pool-button" as={Link} style={{ padding: 16 }} to="/pool/add/ETH">
               <Text fontWeight={500} fontSize={20}>
                 Add Liquidity
               </Text>

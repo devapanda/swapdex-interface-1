@@ -18,6 +18,7 @@ import {
     LOGGER_ID,
     MARGIN_APP_BASE_PATH,
     MARKET_APP_BASE_PATH,
+    POOL_APP_BASE_PATH
 } from './common/constants';
 import { AppContainer } from './components/app';
 import { PageLoading } from './components/common/page_loading';
@@ -26,19 +27,6 @@ import * as serviceWorker from './serviceWorker';
 import { history } from './store';
 import store from './store'
 import { envUtil } from './util/env';
-
-import AddLiquidity from './components/swap/AddLiquidity'
-import {
-  RedirectDuplicateTokenIds,
-  RedirectOldAddLiquidityPathStructure,
-  RedirectToAddLiquidity
-} from './components/swap/AddLiquidity/redirects'
-import MigrateV1 from './components/swap/MigrateV1'
-import MigrateV1Exchange from './components/swap/MigrateV1/MigrateV1Exchange'
-import RemoveV1Exchange from './components/swap/MigrateV1/RemoveV1Exchange'
-import PoolFinder from './components/swap/PoolFinder'
-import RemoveLiquidity from './components/swap/RemoveLiquidity'
-import { RedirectOldRemoveLiquidityPathStructure } from './components/swap/RemoveLiquidity/redirects'
 
 ReactModal.setAppElement('#root');
 
@@ -70,16 +58,7 @@ const Web3WrappedApp = (
                         <Route path={ERC721_APP_BASE_PATH} component={Erc721App} />
                         <Route path={FIAT_RAMP_APP_BASE_PATH} component={FiatApp} />
                         <Route path={MARKET_APP_BASE_PATH} component={MarketTradeApp} />
-                        <Route path="/pool" component={PoolApp} />
-                        <Route exact strict path="/create" component={RedirectToAddLiquidity} />
-                        <Route exact path="/add" component={AddLiquidity} />
-                        <Route exact path="/add/:currencyIdA" component={RedirectOldAddLiquidityPathStructure} />
-                        <Route exact path="/add/:currencyIdA/:currencyIdB" component={RedirectDuplicateTokenIds} />
-                        <Route exact strict path="/remove/v1/:address" component={RemoveV1Exchange} />
-                        <Route exact strict path="/remove/:tokens" component={RedirectOldRemoveLiquidityPathStructure} />
-                        <Route exact strict path="/remove/:currencyIdA/:currencyIdB" component={RemoveLiquidity} />
-                        <Route exact strict path="/migrate/v1" component={MigrateV1} />
-                        <Route exact strict path="/migrate/v1/:address" component={MigrateV1Exchange} />
+                        <Route path={POOL_APP_BASE_PATH} component={PoolApp} />
                         <Route component={RedirectToHome} />
                     </Switch>
                 </Suspense>
