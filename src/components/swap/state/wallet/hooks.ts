@@ -36,7 +36,10 @@ export function useETHBalances(
     () =>
       addresses.reduce<{ [address: string]: CurrencyAmount }>((memo, address, i) => {
         const value = results?.[i]?.result?.[0]
-        if (value) memo[address] = CurrencyAmount.ether(JSBI.BigInt(value.toString()))
+        if (value) {
+            memo[address] = CurrencyAmount.ether(JSBI.BigInt(value.toString()))
+            memo[address.toLowerCase()] = memo[address] // Provide a balance of ETH for the address in lower case format
+        }
         return memo
       }, {}),
     [addresses, results]
@@ -109,9 +112,9 @@ export function useCurrencyBalances(
   return useMemo(
     () =>
       currencies?.map(currency => {
-        if (!account || !currency) return undefined
-        if (currency instanceof Token) return tokenBalances[currency.address]
-        if (currency === ETHER) return ethBalance[account]
+        if (!account || !currency){ return undefined }
+        if (currency instanceof Token) { return tokenBalances[currency.address] }
+        if (currency === ETHER) { return ethBalance[account] }
         return undefined
       }) ?? [],
     [account, currencies, ethBalance, tokenBalances]
