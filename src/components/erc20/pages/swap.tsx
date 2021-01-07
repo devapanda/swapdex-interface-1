@@ -21,9 +21,9 @@ import MulticallUpdater from '../../swap/state/multicall/updater'
 import TransactionUpdater from '../../swap/state/transactions/updater'
 import UserUpdater from '../../swap/state/user/updater'
 
-const Web3ProviderNetwork = createWeb3ReactRoot(NetworkContextName);
+export const Web3ProviderNetwork = createWeb3ReactRoot(NetworkContextName);
 
-const ColumnWideMyWallet = styled(ColumnWide)`
+export const ColumnWideMyWallet = styled(ColumnWide)`
     margin-left: 0;
     &:last-child {
         margin-left: 0;
@@ -39,13 +39,13 @@ const ColumnWideMyWallet = styled(ColumnWide)`
     }
 `;
 
-const CenteredContent = styled(Content as any)`
+export const CenteredContent = styled(Content as any)`
     align-items: center;
     justify-content: center;
     background-color : #EEEEEE;
 `;
 
-function Updaters() {
+export function Updaters() {
   return (
     <>
       <ListsUpdater />

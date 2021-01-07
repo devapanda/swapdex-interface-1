@@ -1,4 +1,4 @@
-import React, { useContext, useMemo } from 'react'
+import React, { useContext, useMemo, useEffect } from 'react'
 import { ThemeContext } from 'styled-components'
 import { Pair } from '@uniswap/sdk'
 import { Link } from 'react-router-dom'
@@ -20,9 +20,29 @@ import { usePairs } from './data/Reserves'
 import { toV2LiquidityToken, useTrackedTokenPairs } from './state/user/hooks'
 import {Dots, Wrapper} from './styleds'
 
+import {InjectedConnector} from "@web3-react/injected-connector";
+import {Web3Provider} from "@ethersproject/providers";
+import {useWeb3React} from "@web3-react/core";
+
+const injectedConnector = new InjectedConnector({
+    supportedChainIds: [
+        1, // Mainet
+        3, // Ropsten
+        4, // Rinkeby
+        5, // Goerli
+        42, // Kovan
+    ],
+})
+
 export default function Pool() {
   const theme = useContext(ThemeContext)
-  const { account } = useActiveWeb3React()
+  const { chainId, account, activate, active } = useWeb3React<Web3Provider>()
+
+  useEffect(() => {
+      if ( !account ) {
+          activate(injectedConnector)
+      }
+  });
 
   // fetch the user's balances of all tracked V2 LP tokens
   const trackedTokenPairs = useTrackedTokenPairs()
@@ -60,7 +80,7 @@ export default function Pool() {
         <Wrapper id="pool-page" style={{ display: 'flex', flexDirection: 'column', width: '75%' }}>
           <SwapPoolTabs active={'pool'} />
           <AutoColumn gap="lg" justify="center">
-            <ButtonPrimary id="join-pool-button" as={Link} style={{ padding: 16 }} to="/add/ETH">
+            <ButtonPrimary id="join-pool-button" as={Link} style={{ padding: 16 }} to="/pool/add/ETH">
               <Text fontWeight={500} fontSize={20}>
                 Add Liquidity
               </Text>
@@ -103,7 +123,7 @@ export default function Pool() {
               <div>
                 <Text textAlign="center" fontSize={14} style={{ padding: '.5rem 0 .5rem 0' }}>
                   {hasV1Liquidity ? 'Uniswap V1 liquidity found!' : "Don't see a pool you joined?"}{' '}
-                  <StyledInternalLink id="import-pool-link" to={hasV1Liquidity ? '/migrate/v1' : '/find'}>
+                  <StyledInternalLink id="import-pool-link" to={hasV1Liquidity ? '/pool/migrate/v1' : '/find'}>
                     {hasV1Liquidity ? 'Migrate now.' : 'Import it.'}
                   </StyledInternalLink>
                 </Text>

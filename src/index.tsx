@@ -18,6 +18,7 @@ import {
     LOGGER_ID,
     MARGIN_APP_BASE_PATH,
     MARKET_APP_BASE_PATH,
+    POOL_APP_BASE_PATH
 } from './common/constants';
 import { AppContainer } from './components/app';
 import { PageLoading } from './components/common/page_loading';
@@ -26,16 +27,6 @@ import * as serviceWorker from './serviceWorker';
 import { history } from './store';
 import store from './store'
 import { envUtil } from './util/env';
-/*import Erc20App from './components/erc20/erc20_app';
-import LaunchpadApp from './components/erc20/launchpad_app';
-import MarginApp from './components/erc20/margin_app';*/
-
-// Adding analytics -- Switch not collects user data
-/*ReactGA.initialize(process.env.REACT_APP_ANALYTICS || '');
-
-history.listen(his => {
-    ReactGA.pageview(his.pathname + his.search);
-});*/
 
 ReactModal.setAppElement('#root');
 
@@ -67,7 +58,7 @@ const Web3WrappedApp = (
                         <Route path={ERC721_APP_BASE_PATH} component={Erc721App} />
                         <Route path={FIAT_RAMP_APP_BASE_PATH} component={FiatApp} />
                         <Route path={MARKET_APP_BASE_PATH} component={MarketTradeApp} />
-                        <Route path="/pool" component={PoolApp} />
+                        <Route path={POOL_APP_BASE_PATH} component={PoolApp} />
                         <Route component={RedirectToHome} />
                     </Switch>
                 </Suspense>
