@@ -62,11 +62,14 @@ export default function AddLiquidity({
 }: RouteComponentProps<{ currencyIdA?: string; currencyIdB?: string }>) {
   const { chainId, account, activate, active, library } = useWeb3React<Web3Provider>()
 
-  // useEffect(() => {
-  //     if ( !account ) {
-  //         activate(injectedConnector)
-  //     }
-  // });
+  console.log("ACC: ", account)
+  console.log("CHAINID: ", chainId)
+
+  useEffect(() => {
+      if ( !account ) {
+          activate(injectedConnector)
+      }
+  });
   const theme = useTheme()
 
   const currencyA = useCurrency(currencyIdA)

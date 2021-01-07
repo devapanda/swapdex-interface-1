@@ -29,7 +29,6 @@ export const BodyWrapper = styled.div`
  * The styled container element that wraps the content of most pages and the tabs.
  */
 export default function AppBody({ children }: { children: React.ReactNode }) {
-  const themeColor = useSelector(getERC20Theme);
   return <ThemeProvider >
       <ThemedGlobalStyle/>
         <CheckWalletStateModalContainer>
