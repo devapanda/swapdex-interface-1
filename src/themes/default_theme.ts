@@ -118,6 +118,7 @@ const lightThemeColors: ThemeProperties = {
     topbarBackgroundColor: '#fff',
     topbarBorderColor: '#dedede',
     topbarSeparatorColor: '#dedede',
+    sidebarBackgroundColor:'#fff',
     ...fontSizes,
 };
 

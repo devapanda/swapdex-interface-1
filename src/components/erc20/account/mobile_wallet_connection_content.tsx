@@ -46,7 +46,7 @@ const ListItemFlex =  styled.li`
 const MenuContainer = styled.div`
     height: 100%;
     z-index: 1000;
-    background-color: ${props => props.theme.componentsTheme.cardBackgroundColor};
+    background-color: ${props => props.theme.componentsTheme.sidebarBackgroundColor};
     width: 250px;
 `;
 

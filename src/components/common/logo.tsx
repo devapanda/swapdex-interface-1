@@ -5,8 +5,10 @@ import { themeBreakPoints } from '../../themes/commons';
 
 interface Props {
     image: React.ReactNode;
-    text: string;
+    text?: string;
     textColor?: string;
+    width?: string;
+    paddingLeft?: string;
     onClick: (event: MouseEvent) => void;
 }
 
@@ -17,31 +19,14 @@ const LogoLink = styled.a<any>`
     height: 33px;
     font-family: 'Inter var', sans-serif;
     text-decoration: none;
+    padding-left: ${props => props.paddingLeft || '0px'};
 `;
-
-const LogoText = styled.h1<{ textColor?: string }>`
-    color: ${props => props.textColor};
-    display: none;
-    font-size: 18px;
-    font-weight: 500;
-    margin-left: 10px;
-    text-decoration: none;
-
-    @media (min-width: ${themeBreakPoints.xxl}) {
-        display: block;
-    }
-`;
-
-LogoText.defaultProps = {
-    textColor: '#000',
-};
 
 export const Logo: React.FC<Props> = props => {
-    const { image, text, textColor, onClick, ...restProps } = props;
+    const { image, onClick, ...restProps } = props;
     return (
         <LogoLink onClick={onClick} {...restProps}>
             {image}
-            <LogoText textColor={textColor}>{text}</LogoText>
         </LogoLink>
     );
 };

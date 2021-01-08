@@ -120,6 +120,7 @@ const darkThemeColors: ThemeProperties = {
     // topbarBackgroundColor: '#081e6e',
     topbarBorderColor: '#000',
     topbarSeparatorColor: '#5A5A5A',
+    sidebarBackgroundColor: '#141420',
     ...fontSizes,
 };
 

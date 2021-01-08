@@ -8,16 +8,16 @@ interface Props {
     isInline?: boolean;
     icon?: string;
     theme: DefaultTheme;
+    width?: string;
 }
 
-const IconContainer = styled.div<{ color: string; isInline?: boolean }>`
+const IconContainer = styled.div<{ color: string; isInline?: boolean; width?: string; }>`
     align-items: center;
     background-color: ${props => (props.color ? props.color : 'transparent')};
     border-radius: 50%;
     display: ${props => (props.isInline ? 'inline-flex' : 'flex')};
     height: 26px;
-    justify-content: center;
-    width: 200px;
+    width: ${props => (props.width || '200px')};
 `;
 
 const LogoIconContainer = (props: Props) => {

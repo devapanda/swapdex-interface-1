@@ -136,7 +136,10 @@ const ToolbarContent = (props: Props) => {
     const location = useLocation();
     const isHome = location.pathname === ERC20_APP_BASE_PATH || location.pathname === `${ERC20_APP_BASE_PATH}/`;
 
-    const logo = generalConfig && generalConfig.icon ? <LogoIcon icon={generalConfig.icon} /> : null;
+    const logo = generalConfig && generalConfig.icon ? (
+        <LogoIcon icon={generalConfig.icon}
+            width={isMobile(window.innerWidth) ? '185px' : '200px'}/>
+    ): null;
     const dispatch = useDispatch();
     const setOpenSideBar = () => {
         dispatch(openSideBar(true));
@@ -189,12 +192,19 @@ const ToolbarContent = (props: Props) => {
     let startContent;
     let endOptContent;
 
+    //#15121F
+
     if (isMobile(props.windowWidth)) {
         startContent = (
             <>
                 <MenuStyledButton onClick={setOpenSideBar}>
                     <StyledMenuBurguer />
                 </MenuStyledButton>
+                <LogoHeader
+                    image={logo}
+                    width={'185px'}
+                    onClick={handleDexTradeClick}
+                />
             </>
         );
     } else {
@@ -203,8 +213,7 @@ const ToolbarContent = (props: Props) => {
                 <LogoHeader
                     image={logo}
                     onClick={handleDexTradeClick}
-                    text={/*(generalConfig && generalConfig.title) || UI_GENERAL_TITLE*/ ''}
-                    textColor={theme.componentsTheme.logoERC20TextColor}
+                    paddingLeft={'1rem'}
                 />
                 {/*!isHome*/}
                 {/* <MyWalletLink href="/swap" onClick={handleMarketTradeClick} className={'market-trade'}>
