@@ -176,6 +176,16 @@ const ToolbarContent = (props: Props) => {
         props.onGoToHomeDefi();
     };
 
+    const handleStakingClick: React.EventHandler<React.MouseEvent> = e => {
+        e.preventDefault();
+    };
+    const handleFiatClick: React.EventHandler<React.MouseEvent> = e => {
+        e.preventDefault();
+    };
+    const handleAnalyticsClick: React.EventHandler<React.MouseEvent> = e => {
+        e.preventDefault();
+    };
+
     let startContent;
     let endOptContent;
 
@@ -220,18 +230,29 @@ const ToolbarContent = (props: Props) => {
                     FIAT
                 </StyledButton>
                 */}
-                <StyledLink href="/defi" onClick={handleDefiClick} className={'defi'}>
-                    DeFi
+                <StyledLink href="/" onClick={handleDexTradeClick} className={'dex'}>
+                    DEX
                 </StyledLink>
                 <StyledLink href="/swap" onClick={handleMarketTradeClick} className={'market-trade'}>
                     Swap
                 </StyledLink>
-                <StyledLink href="/" onClick={handleDexTradeClick} className={'dex'}>
-                    DEX
+                <StyledLink href="/staking" onClick={handleStakingClick} className={'staking'}>
+                    Staking
                 </StyledLink>
+                <StyledLink href="/defi" onClick={handleDefiClick} className={'defi'}>
+                    DeFi
+                </StyledLink>
+                <StyledLink href="/defi" onClick={handleFiatClick} className={'fiat'}>
+                    Fiat
+                </StyledLink>
+                <StyledLink href="/defi" onClick={handleAnalyticsClick} className={'usdx'}>
+                    Analytics
+                </StyledLink>
+                {/*
                 <StyledLink onClick={handleFiatModal} className={'buy-eth'}>
                     Buy ETH
                 </StyledLink>
+                */}
                 {isEnableFiat && (
                     <TransakWidget
                         walletAddress={walletAddress}
