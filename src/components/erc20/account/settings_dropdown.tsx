@@ -22,6 +22,7 @@ const LayoutDropdownHeaderWrapper = styled.div`
     align-items: center;
     cursor: pointer;
     display: flex;
+    padding:0 0.8rem;
 `;
 
 export const WalletConnectionStatusText = styled.span`

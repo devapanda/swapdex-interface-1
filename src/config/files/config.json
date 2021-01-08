@@ -1,7 +1,7 @@
 {
     "general": {
         "title": "SwapDex",
-        "icon": "assets/icons/sdx.svg",
+        "icon": "assets/img/logo.png",
         "social": {
             "telegram_url": "https://t.me/swapdex",
             "twitter_url": "https://twitter.com/swapdexProject",
@@ -18,14 +18,14 @@
             "symbol": "sdx",
             "name": "swapdex",
             "primaryColor": "#081e6e",
-            "icon": "assets/icons/sdx.svg",
+            "icon": "assets/icons/sdxt.svg",
             "addresses": {
                 "1": "0x041fdd6637eCfD96af8804278AC12660ac2D12c0"
             },
             "id": "swapdex",
             "c_id": "swapdex",
             "displayDecimals": 0,
-            "description": "The transparent ecossystem that crypto needs!",
+            "description": "The transparent ecosystem that crypto needs!",
             "website": "https://www.swapdex.net",
             "isStableCoin": false
         },

@@ -17,14 +17,16 @@ const IconContainer = styled.div<{ color: string; isInline?: boolean }>`
     display: ${props => (props.isInline ? 'inline-flex' : 'flex')};
     height: 26px;
     justify-content: center;
-    width: 26px;
+    width: 200px;
 `;
 
 const LogoIconContainer = (props: Props) => {
     const { theme, icon, ...restProps } = props;
+
     const fallBack = null;
     const isSvg = new RegExp('.svg$');
-    const isImage = new RegExp('(http(s?):).*.(?:jpg|gif|png)');
+    const isImage = new RegExp('(http(s?):)?.*.(?:jpg|gif|png)');
+
     let Icon;
     if (isSvg.test(icon as string)) {
         Icon = styled.img`

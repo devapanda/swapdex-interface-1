@@ -9,6 +9,7 @@ import { errorsWallet } from '../../util/error_messages';
 import { StoreState, Web3State } from '../../util/types';
 
 import { ErrorCard, ErrorIcons, FontSize } from './error_card';
+import {MobileWalletConnectionContent} from "../erc20/account/mobile_wallet_connection_content";
 
 interface OwnProps {
     centerContent?: React.ReactNode;
@@ -101,6 +102,21 @@ const ErrorPointer = styled(ErrorCard)`
     cursor: pointer;
 `;
 
+const ConnectWalletNotice = styled.div`
+    color: #fff;
+    text-align: center;
+    border-radius: 100px;
+    background: linear-gradient(125deg,#b12d86,#f53e82);
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    margin-right: 1rem;
+    transition:background 1s;
+    
+    &:hover {
+        background: linear-gradient(125deg,#f53e82,#f53e82);
+    }
+`;
+
 const Toolbar = (props: Props) => {
     const { startContent, endContent, centerContent, onConnectWallet, endOptContent } = props;
 
@@ -134,6 +150,11 @@ const Toolbar = (props: Props) => {
                 return (
                     <>
                         {endOptContent && <ToolbarEndBigWidth>{endOptContent}</ToolbarEndBigWidth>}
+                        <ConnectWalletNotice onClick={onConnectWallet}>
+                            Connect Wallet
+                        </ConnectWalletNotice>
+
+                        {/*
                         <ErrorPointer
                             className={'connect-wallet'}
                             onClick={onConnectWallet}
@@ -141,25 +162,36 @@ const Toolbar = (props: Props) => {
                             text={'Connect Wallet'}
                             icon={ErrorIcons.Lock}
                         />
+                        */}
                     </>
                 );
             case Web3State.Connecting:
                 return (
                     <>
                         {endOptContent && <ToolbarEndBigWidth>{endOptContent}</ToolbarEndBigWidth>}
-                        <ErrorCard fontSize={FontSize.Large} text={'Connecting Wallet'} icon={ErrorIcons.Lock} />
+                        <ConnectWalletNotice>
+                            Connecting Wallet
+                        </ConnectWalletNotice>
+
+                        {/*<ErrorCard fontSize={FontSize.Large} text={'Connecting Wallet'} icon={ErrorIcons.Lock} />*/}
                     </>
                 );
             case Web3State.Loading:
                 return (
                     <>
                         {endOptContent && <ToolbarEndBigWidth>{endOptContent}</ToolbarEndBigWidth>}
+                        <ConnectWalletNotice onClick={onConnectWallet}>
+                            Loading Wallet...
+                        </ConnectWalletNotice>
+
+                        {/*
                         <ErrorCard
                             fontSize={FontSize.Large}
                             text={errorsWallet.mmLoading}
                             icon={ErrorIcons.Wallet}
                             onClick={onConnectWallet}
                         />
+                        */}
                     </>
                 );
             case Web3State.Error:

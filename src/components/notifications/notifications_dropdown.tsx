@@ -25,6 +25,7 @@ type Props = HTMLAttributes<HTMLDivElement> & StateProps & DispatchProps;
 
 const NotificationsDropdownWrapper = styled(Dropdown)`
     z-index: 100;
+    padding:0 0.8rem;
 `;
 
 const NotificationsDropdownHeader = styled.div`

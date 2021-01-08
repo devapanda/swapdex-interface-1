@@ -72,12 +72,20 @@ const SwapDropdownHeader = styled<any>(SwapDropdownContainer)`
 
 const WalletDropdown = styled(WalletConnectionContentContainer)`
     display: none;
+    margin-left:1rem;
+    border-radius: 1rem;
+    padding: 1rem;
+    border:1px solid transparent;
 
     @media (min-width: ${themeBreakPoints.sm}) {
         align-items: center;
         display: flex;
 
         ${separatorTopbar}
+    }
+    
+    &:hover {
+        border: 1px solid #ccc;
     }
 `;
 
@@ -117,10 +125,6 @@ const StyledMenuBurguer = styled(MenuBurguer)`
 `;
 
 const ToolbarContent = (props: Props) => {
-    const handleLogoClick: React.EventHandler<React.MouseEvent> = e => {
-        e.preventDefault();
-        props.onGoToHome();
-    };
     const theme=useTheme();
     const [isEnableFiat, setIsEnableFiat] = useState(false);
     const generalConfig = useSelector(getGeneralConfig);
@@ -157,8 +161,24 @@ const ToolbarContent = (props: Props) => {
         dispatch(changeSwapBaseToken(quoteSwapToken));
     };
 
+    const handleMarketTradeClick: React.EventHandler<React.MouseEvent> = e => {
+        e.preventDefault();
+        props.onGoToHomeMarketTrade();
+    };
+
+    const handleDexTradeClick: React.EventHandler<React.MouseEvent> = e => {
+        e.preventDefault();
+        props.onGoToHome();
+    };
+
+    const handleDefiClick: React.EventHandler<React.MouseEvent> = e => {
+        e.preventDefault();
+        props.onGoToHomeDefi();
+    };
+
     let startContent;
     let endOptContent;
+
     if (isMobile(props.windowWidth)) {
         startContent = (
             <>
@@ -172,27 +192,17 @@ const ToolbarContent = (props: Props) => {
             <>
                 <LogoHeader
                     image={logo}
-                    onClick={handleLogoClick}
-                    text={(generalConfig && generalConfig.title) || UI_GENERAL_TITLE}
+                    onClick={handleDexTradeClick}
+                    text={/*(generalConfig && generalConfig.title) || UI_GENERAL_TITLE*/ ''}
                     textColor={theme.componentsTheme.logoERC20TextColor}
                 />
-                {!isHome}
+                {/*!isHome*/}
                 {/* <MyWalletLink href="/swap" onClick={handleMarketTradeClick} className={'market-trade'}>
                    Market Trade
                 </MyWalletLink>*/}
             </>
         );
     }
-
-    const handleMarketTradeClick: React.EventHandler<React.MouseEvent> = e => {
-        e.preventDefault();
-        props.onGoToHomeMarketTrade();
-    };
-
-    const handleDefiClick: React.EventHandler<React.MouseEvent> = e => {
-        e.preventDefault();
-        props.onGoToHomeDefi();
-    };
 
     let endContent;
     if (isMobile(props.windowWidth)) {
@@ -216,10 +226,12 @@ const ToolbarContent = (props: Props) => {
                 <StyledLink href="/swap" onClick={handleMarketTradeClick} className={'market-trade'}>
                     Swap
                 </StyledLink>
-                <SettingsDropdownContainer className={'settings-dropdown'} />
-                <StyledButton onClick={handleFiatModal} className={'buy-eth'}>
+                <StyledLink href="/" onClick={handleDexTradeClick} className={'dex'}>
+                    DEX
+                </StyledLink>
+                <StyledLink onClick={handleFiatModal} className={'buy-eth'}>
                     Buy ETH
-                </StyledButton>
+                </StyledLink>
                 {isEnableFiat && (
                     <TransakWidget
                         walletAddress={walletAddress}
@@ -235,8 +247,9 @@ const ToolbarContent = (props: Props) => {
                 {/* <MyWalletLink href="/my-wallet" onClick={handleMyWalletClick} className={'my-wallet'}>
                     My Wallet
         </MyWalletLink> */}
-                <WalletDropdown className={'wallet-dropdown'} />
+                <SettingsDropdownContainer className={'settings-dropdown'} />
                 <NotificationsDropdownContainer className={'notifications'} />
+                <WalletDropdown className={'wallet-dropdown'} />
             </>
         );
     }
