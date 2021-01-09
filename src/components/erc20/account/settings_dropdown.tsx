@@ -34,6 +34,12 @@ export const WalletConnectionStatusText = styled.span`
 `;
 
 const DropdownBody = styled(CardBase)`
+    background-color: ${props => props.theme.componentsTheme.dropdownBackgroundColor};
+    border-radius: 4px;
+    border: 1px solid #474747;
+    height: 100%;
+    padding: 0.5rem;
+    
     display: flex;
     justify-content: space-around;
     flex-direction: column;
@@ -41,7 +47,6 @@ const DropdownBody = styled(CardBase)`
     max-height: 100%;
     max-width: 100%;
     width: 190px;
-    height: 380px;
 `;
 const DropdownWrapper = styled(Dropdown)`
     z-index: 100;
@@ -60,18 +65,20 @@ export const LabelContainer = styled.div`
     justify-content: space-between;
     flex-direction: row;
     display: flex;
-    padding-right: 8px;
+    padding: 5px 8px 5px 2px;
 `;
 
 export const ButtonContainer = styled.div`
     justify-content: center;
     flex-direction: row;
     display: flex;
+    margin-top:10px;
 `;
 
 export const StyledButton = styled(Button)`
     padding: 8px;
     margin-bottom: 2px;
+    background: linear-gradient(125deg,#b12d86,#f53e82);
 `;
 
 export const FieldContainer = styled.div`
@@ -245,7 +252,7 @@ export const SettingsDropdownContainer = (props: any) => {
                     text={isDynamicLayout ? 'Dynamic Layout' : 'Static Layout'}
                 />
                 <DropdownTextItem onClick={handleTour} style={{ textAlign: 'center' }} text={'Take Tour'} />
-                <LabelContainer>
+                <LabelContainer style={{marginTop:'10px'}}>
                     <Label>Markets List</Label>
                     <FieldContainer>
                         <input type="checkbox" checked={isMarketList} onChange={onMarketListChecked} />

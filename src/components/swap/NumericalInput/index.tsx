@@ -12,7 +12,7 @@ const StyledInput = styled.input<{ error?: boolean }>`
   border: none;
   flex: 1 1 auto;
   background-color: #2a2735;
-  font-size: 1.25em;
+  font-size: 1rem;
   text-align: center;
   white-space: nowrap;
   overflow: hidden;

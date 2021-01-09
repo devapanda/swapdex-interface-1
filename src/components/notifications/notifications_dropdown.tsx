@@ -49,6 +49,7 @@ const NewNotificationsBadge = styled.div`
 `;
 
 const NotificationsDropdownBody = styled(CardBase)`
+    background-color: ${props => props.theme.componentsTheme.dropdownBackgroundColor};
     box-shadow: ${props => props.theme.componentsTheme.boxShadow};
     width: 400px;
     @media (max-width: ${themeBreakPoints.sm}) {

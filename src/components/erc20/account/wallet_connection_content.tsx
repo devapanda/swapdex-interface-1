@@ -37,6 +37,7 @@ interface DispatchProps {
 type Props = StateProps & OwnProps & DispatchProps;
 
 const DropdownItems = styled(CardBase)`
+    background: ${props => props.theme.componentsTheme.dropdownBackgroundColor};
     box-shadow: ${props => props.theme.componentsTheme.boxShadow};
     min-width: 240px;
 `;

@@ -20,6 +20,7 @@ const InputRow = styled.div<{ selected: boolean }>`
   padding: ${({ selected }) => (selected ? '0.75rem 0.5rem 0.75rem 1rem' : '0.75rem 0.75rem 0.75rem 1rem')};
   display: flex;
   flex-direction: column;
+  width:350px;
 `
 
 const CurrencySelect = styled.button<{ selected: boolean, side: string }>`
@@ -83,7 +84,6 @@ const InputPanel = styled.div<{ hideInput?: boolean, side: string }>`
   border-radius: ${({ side }) => (side == 'left' ? '36px 0px 36px 36px' : '0px 36px 36px 36px')};
   background-color: transparent;
   z-index: 1;
-  width: 30%;
   height: 100%;
   
   ${({ theme }) => theme.mediaWidth.upToMedium`

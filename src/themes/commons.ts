@@ -9,6 +9,7 @@ export interface Theme  {
 
 export interface ThemeProperties {
     background: string;
+    backgroundTextColor: string;
     backgroundERC721: string;
     borderColor: string;
     boxShadow: string;
@@ -40,7 +41,10 @@ export interface ThemeProperties {
     darkerGray: string;
     dropdownBackgroundColor: string;
     dropdownBorderColor: string;
+    dropdownLinkBackgroundColor: string;
+    dropdownLinkBackgroundColorHover: string;
     dropdownTextColor: string;
+    dropdownTextColorHover: string;
     errorButtonBackground: string;
     errorCardBackground: string;
     errorCardBorder: string;

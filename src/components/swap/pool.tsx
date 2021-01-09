@@ -88,7 +88,7 @@ export default function Pool() {
 
             <AutoColumn gap="12px" style={{ width: '100%' }}>
               <RowBetween padding={'0 8px'}>
-                <Text color={theme.text1} fontWeight={500}>
+                <Text color={theme.componentsTheme.backgroundTextColor} fontWeight={500}>
                   Your Liquidity
                 </Text>
                 <Question text="When you add liquidity, you are given pool tokens that represent your share. If you don’t see a pool you joined in this list, try importing a pool below." />
@@ -121,7 +121,7 @@ export default function Pool() {
               )}
 
               <div>
-                <Text textAlign="center" fontSize={14} style={{ padding: '.5rem 0 .5rem 0' }}>
+                <Text textAlign="center" color={theme.componentsTheme.backgroundTextColor} fontSize={14} style={{ padding: '.5rem 0 .5rem 0' }}>
                   {hasV1Liquidity ? 'Uniswap V1 liquidity found!' : "Don't see a pool you joined?"}{' '}
                   <StyledInternalLink id="import-pool-link" to={hasV1Liquidity ? '/pool/migrate/v1' : '/find'}>
                     {hasV1Liquidity ? 'Migrate now.' : 'Import it.'}

@@ -30,6 +30,7 @@ const modalThemeStyle: Styles = {
 
 const lightThemeColors: ThemeProperties = {
     background: '#f4f3f4',
+    backgroundTextColor: '#000',
     backgroundERC721: '#F9FAFC',
     borderColor: '#dedede',
     boxShadow: '0 10px 10px rgba(0, 0, 0, 0.1)',
@@ -61,7 +62,10 @@ const lightThemeColors: ThemeProperties = {
     darkerGray: '#666',
     dropdownBackgroundColor: '#fff',
     dropdownBorderColor: '#dedede',
+    dropdownLinkBackgroundColor: '#2c2738',
+    dropdownLinkBackgroundColorHover: '#b41761',
     dropdownTextColor: '#000',
+    dropdownTextColorHover: '#fff',
     errorButtonBackground: '#FF6534',
     errorCardBackground: '#FAF4EF',
     errorCardBorder: '#F39E4B',

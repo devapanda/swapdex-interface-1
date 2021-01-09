@@ -364,10 +364,11 @@ export default function Swap() {
     border-radius: 20px;
     background-color: ${props => props.theme.componentsTheme.swapCardBackgroundColor};
     padding: 30px;
-    width: 50%;
     -webkit-box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.2);  /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
     -moz-box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.2);   /* Firefox 3.5 - 3.6 */
     box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.2);
+    width:100%;
+    max-width:500px;
 
     ${({theme}) => theme.mediaWidth.upToMedium`
       display: none;
