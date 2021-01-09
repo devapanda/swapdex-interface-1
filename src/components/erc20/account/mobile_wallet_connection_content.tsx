@@ -78,20 +78,10 @@ export const MobileWalletConnectionContent = () => {
         dispatch(openSideBar(false));
     };
 
-    /* const onGoToLaunchpad = () => {
-        dispatch(goToHomeLaunchpad());
-        dispatch(openSideBar(false));
-    };*/
-
     const onGoToMarketTrade = () => {
         dispatch(goToHomeMarketTrade());
         dispatch(openSideBar(false));
     };
-
-    /*const onGoToMarginLend = () => {
-        dispatch(goToHomeMarginLend());
-        dispatch(openSideBar(false));
-    };*/
 
     const onGoToWallet = () => {
         dispatch(goToWallet());
@@ -121,6 +111,15 @@ export const MobileWalletConnectionContent = () => {
         setIsEnableFiat(!isEnableFiat);
     };
 
+    const handleStakingClick: React.EventHandler<React.MouseEvent> = e => {
+    };
+
+    const handleUSDXClick: React.EventHandler<React.MouseEvent> = e => {
+    };
+
+    const handleAnalyticsClick: React.EventHandler<React.MouseEvent> = e => {
+    };
+
     const status: string = ethAccount ? 'active' : '';
 
     const ethAccountText = ethAccount ? `${truncateAddress(ethAccount)}` : 'Not connected';
@@ -134,12 +133,14 @@ export const MobileWalletConnectionContent = () => {
     return (
         <MenuContainer>
             <ListContainer>
-                <ListItem onClick={onGoToHome}>Home</ListItem>
                 <ListItem onClick={onGoToWallet}>Wallet</ListItem>
-                <ListItem onClick={onGoToMarketTrade}>Market Trade</ListItem>
-                {/*   <ListItem onClick={onGoToLaunchpad}>Launchpad</ListItem>*/}
+                <ListItem onClick={onGoToHome}>DEX</ListItem>
+                <ListItem onClick={onGoToMarketTrade}>Swap</ListItem>
+                <ListItem onClick={onGoToMarketTrade}>Staking</ListItem>
                 <ListItem onClick={onGoToDefi}>DeFi</ListItem>
-                {/*<ListItem onClick={onGoToMarginLend}>Lend</ListItem>*/}
+                <ListItem onClick={onGoToMarketTrade}>USDX</ListItem>
+                <ListItem onClick={onGoToMarketTrade}>Fiat</ListItem>
+                <ListItem onClick={onGoToMarketTrade}>Analytics</ListItem>
                 <hr />
                 <CopyToClipboard text={ethAccount ? ethAccount : ''}>
                     <ListItemFlex>

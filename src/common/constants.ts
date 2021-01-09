@@ -13,6 +13,9 @@ export const DEFI_APP_BASE_PATH = '/defi';
 export const INSTANT_APP_BASE_PATH = '/instant';
 export const FIAT_RAMP_APP_BASE_PATH = '/fiat-onramp';
 export const MARKET_MAKER_APP_BASE_PATH = `${ERC20_APP_BASE_PATH}/market-maker`;
+export const ANALYTICS_APP_BASE_PATH = '/analytics';
+export const STAKING_APP_BASE_PATH = '/staking';
+export const USDX_APP_BASE_PATH = '/usdx';
 
 export const USE_RELAYER_MARKET_UPDATES = process.env.REACT_APP_USE_RELAYER_MARKET_UPDATES === 'true' ? true : false;
 

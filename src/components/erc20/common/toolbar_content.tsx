@@ -181,6 +181,10 @@ const ToolbarContent = (props: Props) => {
         props.onGoToHomeDefi();
     };
 
+    const handleUSDXClick: React.EventHandler<React.MouseEvent> = e => {
+        e.preventDefault();
+    };
+
     const handleStakingClick: React.EventHandler<React.MouseEvent> = e => {
         e.preventDefault();
     };
@@ -239,28 +243,32 @@ const ToolbarContent = (props: Props) => {
                     FIAT
                 </StyledButton>
                 */}
-                <StyledLink href="/" onClick={handleDexTradeClick} className={'dex'}>
+
+                <StyledLink href="/dex" onClick={handleDexTradeClick} className={'market-trade'}>
                     DEX
                 </StyledLink>
                 <StyledLink href="/swap" onClick={handleMarketTradeClick} className={'market-trade'}>
                     Swap
                 </StyledLink>
-                <StyledLink href="/staking" onClick={handleStakingClick} className={'staking'}>
+                <StyledLink href="/staking" onClick={handleStakingClick} className={'defi'}>
                     Staking
                 </StyledLink>
                 <StyledLink href="/defi" onClick={handleDefiClick} className={'defi'}>
                     DeFi
                 </StyledLink>
-                <StyledLink href="/defi" onClick={handleFiatClick} className={'fiat'}>
+                <StyledLink href="/usdx" onClick={handleUSDXClick} className={'defi'}>
+                    USDX
+                </StyledLink>
+                <StyledLink href="/fiat-onramp" onClick={handleFiatModal} className={'defi'}>
                     Fiat
                 </StyledLink>
-                <StyledLink href="/defi" onClick={handleAnalyticsClick} className={'usdx'}>
+                <StyledLink href="/analytics" onClick={handleAnalyticsClick} className={'defi'}>
                     Analytics
                 </StyledLink>
                 {/*
-                <StyledLink onClick={handleFiatModal} className={'buy-eth'}>
+                <StyledButton onClick={handleFiatModal} className={'buy-eth'}>
                     Buy ETH
-                </StyledLink>
+                </StyledButton>
                 */}
                 {isEnableFiat && (
                     <TransakWidget
