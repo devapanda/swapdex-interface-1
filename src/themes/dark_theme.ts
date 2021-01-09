@@ -5,7 +5,7 @@ import { DefaultTheme } from './default_theme';
 
 const modalThemeStyle: Styles = {
     content: {
-        backgroundColor: '#02112c',
+        backgroundColor: '#EEE',
         borderColor: '#000',
         bottom: 'auto',
         display: 'flex',
@@ -30,7 +30,7 @@ const modalThemeStyle: Styles = {
 };
 // cardBackgroundColor: '#02112c',
 const darkThemeColors: ThemeProperties = {
-    background: '#000',
+    background: '#2a2735',
     backgroundERC721: '#000',
     borderColor: '#5A5A5A',
     boxShadow: '0 10px 10px rgba(0, 0, 0, 0.1)',
@@ -40,7 +40,7 @@ const darkThemeColors: ThemeProperties = {
     buttonConvertBorderColor: '#000',
     buttonConvertTextColor: '#fff',
     buttonErrorBackgroundColor: '#FF6534',
-    buttonPrimaryBackgroundColor: '#002979',
+    buttonPrimaryBackgroundColor: 'linear-gradient(125deg,#b12d86,#f53e82)',
     buttonQuaternaryBackgroundColor: '#00AE99',
     buttonSecondaryBackgroundColor: '#3CB34F',
     buttonSellBackgroundColor: '#FF6534',
@@ -121,12 +121,14 @@ const darkThemeColors: ThemeProperties = {
     topbarBorderColor: '#000',
     topbarSeparatorColor: '#5A5A5A',
     sidebarBackgroundColor: '#141420',
+    swapCardBackgroundColor: '#3a3547',
     ...fontSizes,
 };
 
 export class DarkTheme extends DefaultTheme {
     constructor() {
         super();
+        this.logo = 'assets/img/logo.png';
         this.componentsTheme = darkThemeColors;
         this.modalTheme = modalThemeStyle;
     }

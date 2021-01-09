@@ -42,7 +42,7 @@ export const ColumnWideMyWallet = styled(ColumnWide)`
 export const CenteredContent = styled(Content as any)`
     align-items: center;
     justify-content: center;
-    background-color : #EEEEEE;
+    background-color : ${props => props.theme.componentsTheme.background}; 
 `;
 
 export function Updaters() {

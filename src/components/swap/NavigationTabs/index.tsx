@@ -42,14 +42,14 @@ const StyledNavLink = styled(NavLink).attrs({
   outline: none;
   cursor: pointer;
   text-decoration: none;
-  color: #8b91f5;
+  color: #bd3085;
   font-size: 1em;
   width: 100%;
 
   &.${activeClassName} {
     font-weight: 500;
     color: #FFFFFF;
-    background-color: #3b5998;
+    background: linear-gradient(125deg,#b12d86,#f53e82);
   }
 
   ${({ theme }) => theme.mediaWidth.upToMedium`

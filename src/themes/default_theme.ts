@@ -119,13 +119,16 @@ const lightThemeColors: ThemeProperties = {
     topbarBorderColor: '#dedede',
     topbarSeparatorColor: '#dedede',
     sidebarBackgroundColor:'#fff',
+    swapCardBackgroundColor:'#e5e5e5',
     ...fontSizes,
 };
 
 export class DefaultTheme implements Theme {
+    public logo: string;
     public componentsTheme: ThemeProperties;
     public modalTheme: Styles;
     constructor() {
+        this.logo = 'assets/img/logo_light.png';
         this.componentsTheme = lightThemeColors;
         this.modalTheme = modalThemeStyle;
     }

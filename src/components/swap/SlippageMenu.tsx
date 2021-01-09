@@ -37,7 +37,7 @@ const Option = styled(FancyButton)<{ active: boolean }>`
   :hover {
     cursor: pointer;
   }
-  background-color: ${({ active, theme }) => active && '#3b5998'};
+  background-color: ${({ active, theme }) => active && '#bd006a'};
   color: ${({ active, theme }) => (active ? theme.white : '#7C7C7C')};
 `
 
@@ -92,7 +92,10 @@ export default function SlippageTabs({ rawSlippage, setRawSlippage, deadline, se
 
     const inputRef = useRef<HTMLInputElement>()
 
-    const [slippageInput, setSlippageInput] = useState('')
+    const [slippageInput, setSlippageInput] = useState('');
+
+    console.log((rawSlippage / 100).toFixed(2));
+    console.log(Number.parseFloat(slippageInput).toFixed(2));
 
     const slippageInputIsValid =
         slippageInput === '' || (rawSlippage / 100).toFixed(2) === Number.parseFloat(slippageInput).toFixed(2)
@@ -113,6 +116,7 @@ export default function SlippageTabs({ rawSlippage, setRawSlippage, deadline, se
         try {
             const valueAsIntFromRoundedFloat = Number.parseInt((Number.parseFloat(value) * 100).toString())
             if (!Number.isNaN(valueAsIntFromRoundedFloat) && valueAsIntFromRoundedFloat < 5000) {
+                console.log('setRawSlippage:'+(valueAsIntFromRoundedFloat));
                 setRawSlippage(valueAsIntFromRoundedFloat)
             }
         } catch {}
@@ -150,13 +154,11 @@ export default function SlippageTabs({ rawSlippage, setRawSlippage, deadline, se
                             <Input
                                 ref={inputRef as any}
                                 placeholder={(rawSlippage / 100).toFixed(2)}
-                                value={slippageInput}
                                 onFocus={e => e.target.select()}
-                                onBlur={e => {
+                                onChange={e => {
                                     parseCustomSlippage(e.target.value);
                                     //parseCustomSlippage((rawSlippage / 100).toFixed(2))
                                 }}
-                                onChange={e => setSlippageInput(e.target.value)}
                                 color={!slippageInputIsValid ? 'red' : ''}
                             />
                             <span>%</span>

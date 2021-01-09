@@ -319,7 +319,7 @@ export default function Swap() {
     align-items: center;
     justify-content: center;
     border-radius: 100px 100px 0 0;
-    background-color: #F5F6FA;
+    background-color: ${props => props.theme.componentsTheme.swapCardBackgroundColor};
     width: 150px;
     height: 80px;
     margin-top: -4rem;
@@ -362,7 +362,7 @@ export default function Swap() {
     align-items: center;
     justify-content: center;
     border-radius: 20px;
-    background-color: #F5F6FA;
+    background-color: ${props => props.theme.componentsTheme.swapCardBackgroundColor};
     padding: 30px;
     width: 40%;
     -webkit-box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.2);  /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
@@ -449,6 +449,7 @@ export default function Swap() {
 
                 <InputPanelWrapper>
                     <CurrencyInputPanel
+                        first={true}
                         label={independentField === SwapField.OUTPUT && !showWrap && trade ? 'From (estimated)' : 'From'}
                         value={formattedAmounts[SwapField.INPUT]}
                         showMaxButton={!atMaxAmountInput}
@@ -480,6 +481,7 @@ export default function Swap() {
                         </AutoRow>
                     </AutoColumn>
                     <CurrencyInputPanel
+                        first={false}
                         value={formattedAmounts[SwapField.OUTPUT]}
                         onUserInput={handleTypeOutput}
                         label={independentField === SwapField.INPUT && !showWrap && trade ? 'To (estimated)' : 'To'}
@@ -625,7 +627,7 @@ export default function Swap() {
                                     }
                                 }}
                                 id="swap-button"
-                                disabled={!isValid || (priceImpactSeverity > 3 && !isExpertMode) || !!swapCallbackError}
+                                disabled={!!swapInputError || !isValid || (priceImpactSeverity > 3 && !isExpertMode) || !!swapCallbackError}
                                 error={isValid && priceImpactSeverity > 2 && !swapCallbackError}
                             >
                                 <Text fontSize={20} fontWeight={500}>
@@ -712,7 +714,7 @@ export default function Swap() {
                                             width="48%"
                                             id="swap-button"
                                             disabled={
-                                                !isValid || approval !== ApprovalState.APPROVED || (priceImpactSeverity > 3 && !isExpertMode)
+                                                !!swapInputError || !isValid || approval !== ApprovalState.APPROVED || (priceImpactSeverity > 3 && !isExpertMode)
                                             }
                                             error={isValid && priceImpactSeverity > 2}
                                         >

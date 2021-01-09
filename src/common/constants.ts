@@ -135,7 +135,7 @@ export const START_BLOCK_LIMIT: number = Number.parseInt(process.env.REACT_APP_S
 
 export const LOGGER_ID: string = process.env.REACT_APP_LOGGER_ID || 'veridex';
 
-export const ERC20_THEME_NAME: string = process.env.REACT_APP_ERC20_THEME_NAME || 'DARK_THEME';
+export const ERC20_THEME_NAME: string = process.env.REACT_APP_ERC20_THEME_NAME || 'LIGHT_THEME';
 
 export const ERC721_THEME_NAME: string = process.env.REACT_APP_ERC721_THEME_NAME || 'LIGHT_THEME';
 

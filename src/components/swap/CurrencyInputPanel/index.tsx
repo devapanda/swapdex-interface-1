@@ -92,9 +92,9 @@ const InputPanel = styled.div<{ hideInput?: boolean, side: string }>`
   `};
 `
 
-const Container = styled.div<{ hideInput: boolean, side: string }>`
+const Container = styled.div<{ first?: boolean, hideInput: boolean, side: string }>`
   border-radius: ${({ side }) => (side == 'left' ? '36px 0px 36px 36px' : '0px 36px 36px 36px')};
-  background-color: #3b5998;
+  background: ${props => props.first ? 'linear-gradient(125deg,#b12d86,#f53e82)' : 'linear-gradient(125deg,#f53e82,#b12d86)'};
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -147,7 +147,7 @@ const AmountInput = styled.div<{ side: string }>`
   border: none;
   flex: 1 1 auto;
   border: 3px solid #FFFFFF;
-  background-color: #3b5998;
+  background-color: #2a2735;
   font-size: 1.75em;
   text-align: center;
   white-space: nowrap;
@@ -162,6 +162,7 @@ const AmountInput = styled.div<{ side: string }>`
 `
 
 interface CurrencyInputPanelProps {
+  first?: boolean,
   value: string
   onUserInput: (value: string) => void
   onMax?: () => void
@@ -180,6 +181,7 @@ interface CurrencyInputPanelProps {
 }
 
 export default function CurrencyInputPanel({
+    first,
   value,
   onUserInput,
   onMax,
@@ -209,7 +211,7 @@ export default function CurrencyInputPanel({
 
   return (
     <InputPanel id={id} side={side}>
-      <Container hideInput={hideInput} side={side}>
+      <Container first={first} hideInput={hideInput} side={side}>
         {!hideInput && (
           <LabelRow style={{ display: 'none' }}>
             <RowBetween>

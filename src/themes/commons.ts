@@ -2,6 +2,7 @@ import { Styles } from 'react-modal';
 import { DefaultTheme } from './default_theme';
 
 export interface Theme  {
+    logo?: string;
     componentsTheme: ThemeProperties;
     modalTheme: Styles;
 }
@@ -110,6 +111,7 @@ export interface ThemeProperties {
     topbarBorderColor: string;
     topbarSeparatorColor: string;
     sidebarBackgroundColor: string;
+    swapCardBackgroundColor: string;
 }
 
 export interface ThemeModalStyle {

@@ -11,7 +11,7 @@ const StyledInput = styled.input<{ error?: boolean }>`
   outline: none;
   border: none;
   flex: 1 1 auto;
-  background-color: #3b5998;
+  background-color: #2a2735;
   font-size: 1.25em;
   text-align: center;
   white-space: nowrap;
