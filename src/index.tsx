@@ -18,7 +18,10 @@ import {
     LOGGER_ID,
     MARGIN_APP_BASE_PATH,
     MARKET_APP_BASE_PATH,
-    POOL_APP_BASE_PATH
+    POOL_APP_BASE_PATH,
+    STAKING_APP_BASE_PATH,
+    USDX_APP_BASE_PATH,
+    ANALYTICS_APP_BASE_PATH
 } from './common/constants';
 import { AppContainer } from './components/app';
 import { PageLoading } from './components/common/page_loading';
@@ -59,6 +62,9 @@ const Web3WrappedApp = (
                         <Route path={FIAT_RAMP_APP_BASE_PATH} component={FiatApp} />
                         <Route path={MARKET_APP_BASE_PATH} component={MarketTradeApp} />
                         <Route path={POOL_APP_BASE_PATH} component={PoolApp} />
+                        <Route path={STAKING_APP_BASE_PATH} component={Erc20App} />
+                        <Route path={USDX_APP_BASE_PATH} component={Erc20App} />
+                        <Route path={ANALYTICS_APP_BASE_PATH} component={Erc20App} />
                         <Route component={RedirectToHome} />
                     </Switch>
                 </Suspense>
