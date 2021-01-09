@@ -381,6 +381,7 @@ export default function Swap() {
     align-items: center;
     justify-content: center;
     padding: 30px;
+    width:100%;
   `
 
     const AssetsWrapper = styled.div`
@@ -654,19 +655,21 @@ export default function Swap() {
                 {isMobile ?
                     <Modal isOpen={modalOpen} onDismiss={handleDismissTransactionDetails} maxHeight={90} minHeight={30}>
                         <MobileTransactionDetailsWrapper>
-                            <RoundedWrapper style={{marginTop: '0.25rem'}}
+                            {/*<RoundedWrapper style={{marginTop: '0.25rem'}}
                                             onClick={() => {
                                                 if (isMobile) {
                                                     setModalOpen(false)
                                                 }
                                             }
                                             }>
+
                                 <img id="swap-circle" src={SwapCircle} style={{
                                     position: "absolute",
                                     filter: 'drop-shadow(0px 6px 10px rgba(0, 0, 0, 0.2))'
                                 }}></img>
                                 <img id="swap-circle-logo" src={Logo} style={{zIndex: 4}}></img>
                             </RoundedWrapper>
+                                */}
                             <BottomGrouping style={{marginBottom: '1rem'}}>
                                 {!account ? (
                                     <ButtonLight onClick={toggleWalletModal}>Connect Wallet</ButtonLight>
