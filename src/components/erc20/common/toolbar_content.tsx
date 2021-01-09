@@ -194,6 +194,15 @@ const ToolbarContent = (props: Props) => {
         props.onGoToHomeDefi();
     };
 
+    const handleStakingClick: React.EventHandler<React.MouseEvent> = e => {
+    };
+
+    const handleUSDXClick: React.EventHandler<React.MouseEvent> = e => {
+    };
+
+    const handleAnalyticsClick: React.EventHandler<React.MouseEvent> = e => {
+    };
+
     let endContent;
     if (isMobile(props.windowWidth)) {
         endContent = (
@@ -210,11 +219,27 @@ const ToolbarContent = (props: Props) => {
                     FIAT
                 </StyledButton>
                 */}
-                <StyledLink href="/defi" onClick={handleDefiClick} className={'defi'}>
-                    DeFi
+
+                <StyledLink href="/dex" onClick={handleLogoClick} className={'market-trade'}>
+                    DEX
                 </StyledLink>
                 <StyledLink href="/swap" onClick={handleMarketTradeClick} className={'market-trade'}>
                     Swap
+                </StyledLink>
+                <StyledLink href="/staking" onClick={handleStakingClick} className={'defi'}>
+                    Staking
+                </StyledLink>
+                <StyledLink href="/defi" onClick={handleDefiClick} className={'defi'}>
+                    DeFi
+                </StyledLink>
+                <StyledLink href="/usdx" onClick={handleUSDXClick} className={'defi'}>
+                    USDX
+                </StyledLink>
+                <StyledLink href="/fiat-onramp" onClick={handleFiatModal} className={'defi'}>
+                    Fiat
+                </StyledLink>
+                <StyledLink href="/analytics" onClick={handleAnalyticsClick} className={'defi'}>
+                    Analytics
                 </StyledLink>
                 <SettingsDropdownContainer className={'settings-dropdown'} />
                 <StyledButton onClick={handleFiatModal} className={'buy-eth'}>
