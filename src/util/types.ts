@@ -965,6 +965,7 @@ export interface Filter {
 }
 
 export interface PartialTheme {
+    logo?: string;
     componentsTheme?: Partial<ThemeProperties>;
     modalTheme?: Partial<Styles>;
 }

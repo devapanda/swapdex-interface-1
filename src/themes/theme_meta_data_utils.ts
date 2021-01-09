@@ -25,9 +25,16 @@ export const getThemeByMarketplace = (marketplace: MARKETPLACES): Theme => {
     const themeBase =
         marketplace === MARKETPLACES.ERC20 ? getThemeByName(ERC20_THEME_NAME) : getThemeByName(ERC721_THEME_NAME);
     const themeConfig = Config.getConfig().theme;
+
+    // Get logo
+    const logo = themeConfig ? themeConfig.logo : themeBase.logo;
+
+    // Get components theme
     const componentsTheme = themeConfig
         ? { ...themeBase.componentsTheme, ...themeConfig.componentsTheme }
         : themeBase.componentsTheme;
+
+    // Get modal theme
     const modalTheme = themeConfig
         ? {
               content: {
@@ -41,6 +48,7 @@ export const getThemeByMarketplace = (marketplace: MARKETPLACES): Theme => {
           }
         : themeBase.modalTheme;
     return {
+        logo,
         componentsTheme,
         modalTheme,
     };
@@ -54,9 +62,16 @@ export const getThemeFromConfigDex = (themeN?: string): Theme => {
         : (themeName = Config.getConfig().theme_name ? Config.getConfig().theme_name : ERC20_THEME_NAME);
     const themeBase = getThemeByName(themeName as string);
     const themeConfig = themeName === 'DARK_THEME' ? Config.getConfig().theme_dark : Config.getConfig().theme_light;
+
+    // Get logo
+    const logo = themeConfig ? themeConfig.logo : themeBase.logo;
+
+    // Get component theme
     const componentsTheme = themeConfig
         ? { ...themeBase.componentsTheme, ...themeConfig.componentsTheme }
         : themeBase.componentsTheme;
+
+    // Get modal theme
     const modalTheme = themeConfig
         ? {
               content: {
@@ -70,6 +85,7 @@ export const getThemeFromConfigDex = (themeN?: string): Theme => {
           }
         : themeBase.modalTheme;
     return {
+        logo,
         componentsTheme,
         modalTheme,
     };

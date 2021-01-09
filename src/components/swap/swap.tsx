@@ -356,15 +356,15 @@ export default function Swap() {
     `};
   `
 
-    const TransactionDeatailsWrapper = styled.div`
-    display: flex;
+    const TransactionDetailsWrapper = styled.div`
+    
     flex-direction: column;
     align-items: center;
     justify-content: center;
     border-radius: 20px;
     background-color: ${props => props.theme.componentsTheme.swapCardBackgroundColor};
     padding: 30px;
-    width: 40%;
+    width: 50%;
     -webkit-box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.2);  /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
     -moz-box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.2);   /* Firefox 3.5 - 3.6 */
     box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.2);
@@ -374,7 +374,7 @@ export default function Swap() {
     `};
   `
 
-    const MobileTransactionDeatailsWrapper = styled.div`
+    const MobileTransactionDetailsWrapper = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -551,7 +551,7 @@ export default function Swap() {
                          style={{position: "absolute", filter: 'drop-shadow(0px 6px 10px rgba(0, 0, 0, 0.2))'}}></img>
                     <img id="swap-circle-logo" src={Logo} style={{zIndex: 4}}></img>
                 </RoundedWrapper>
-                <TransactionDeatailsWrapper>
+                <TransactionDetailsWrapper>
                     <BottomGrouping style={{marginBottom: '1rem'}}>
                         {account === null || account === '' ? (
                             <ButtonLight onClick={toggleWalletModal}>Connect Wallet</ButtonLight>
@@ -649,10 +649,10 @@ export default function Swap() {
                         setDeadline={setDeadline}
                     />
                     <AdvancedSwapDetails trade={trade}/>
-                </TransactionDeatailsWrapper>
+                </TransactionDetailsWrapper>
                 {isMobile ?
                     <Modal isOpen={modalOpen} onDismiss={handleDismissTransactionDetails} maxHeight={90} minHeight={30}>
-                        <MobileTransactionDeatailsWrapper>
+                        <MobileTransactionDetailsWrapper>
                             <RoundedWrapper style={{marginTop: '0.25rem'}}
                                             onClick={() => {
                                                 if (isMobile) {
@@ -764,7 +764,7 @@ export default function Swap() {
                                 setDeadline={setDeadline}
                             />
                             <AdvancedSwapDetails trade={trade}/>
-                        </MobileTransactionDeatailsWrapper>
+                        </MobileTransactionDetailsWrapper>
                     </Modal> : ''}
             </Wrapper>
             <AssetsWrapper style={{display: 'none'}}></AssetsWrapper>

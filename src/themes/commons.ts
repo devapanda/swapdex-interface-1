@@ -2,7 +2,7 @@ import { Styles } from 'react-modal';
 import { DefaultTheme } from './default_theme';
 
 export interface Theme  {
-    logo?: string;
+    logo: string;
     componentsTheme: ThemeProperties;
     modalTheme: Styles;
 }
