@@ -119,7 +119,7 @@ const lightThemeColors: ThemeProperties = {
     topbarBorderColor: '#dedede',
     topbarSeparatorColor: '#dedede',
     sidebarBackgroundColor:'#fff',
-    swapCardBackgroundColor:'#e5e5e5',
+    swapCardBackgroundColor: '#3a3547',
     ...fontSizes,
 };
 

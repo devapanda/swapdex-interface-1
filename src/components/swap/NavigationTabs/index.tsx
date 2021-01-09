@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { useTranslation } from 'react-i18next'
 import { NavLink, Link as HistoryLink } from 'react-router-dom'
+import { ButtonPrimary } from '../Button';
 
 import { ArrowLeft } from 'react-feather'
 import { RowBetween } from '../Row'
@@ -96,7 +97,7 @@ export function FindPoolTabs() {
 
 export function AddRemoveTabs({ adding }: { adding: boolean }) {
   return (
-    <Tabs>
+    <ButtonPrimary style={{padding:'0', width:'50%'}}>
       <RowBetween style={{ padding: '1rem' }}>
         <HistoryLink to="/pool">
           <StyledArrowLeft />
@@ -110,6 +111,6 @@ export function AddRemoveTabs({ adding }: { adding: boolean }) {
           }
         />
       </RowBetween>
-    </Tabs>
+    </ButtonPrimary>
   )
 }
