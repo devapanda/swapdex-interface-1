@@ -7,6 +7,7 @@ import { CardBase } from './card_base';
 
 interface Props extends HTMLAttributes<HTMLDivElement> {
     title?: string;
+    headerPadding?: string;
     action?: React.ReactNode;
     children: React.ReactNode;
     minHeightBody?: string;
@@ -25,7 +26,7 @@ const CardWrapper = styled(CardBase)`
     }
 `;
 
-const CardHeader = styled.div`
+const CardHeader = styled.div<{padding?: string}>`
     align-items: center;
     border-bottom: 1px solid ${props => props.theme.componentsTheme.cardBorderColor};
     background-color: ${props => props.theme.componentsTheme.cardHeaderBackgroundColor};
@@ -33,7 +34,9 @@ const CardHeader = styled.div`
     flex-grow: 0;
     flex-shrink: 0;
     justify-content: space-between;
-    padding: ${themeDimensions.verticalPadding} ${themeDimensions.horizontalPadding};
+    text-transform: uppercase;
+    letter-spacing: 0.03rem;
+    padding: ${props => props.padding || '10px'};
 `;
 
 const CardTitle = styled.h1`
@@ -60,12 +63,12 @@ CardBody.defaultProps = {
 };
 
 export const Card: React.FC<Props> = props => {
-    const { title, action, children, minHeightBody, disableOverflowBody, ...restProps } = props;
+    const { title, action, children, minHeightBody, disableOverflowBody, headerPadding, ...restProps } = props;
 
     return (
         <CardWrapper {...restProps}>
             {title || action ? (
-                <CardHeader>
+                <CardHeader padding={headerPadding}>
                     <CardTitle>{title}</CardTitle>
                     {action ? action : null}
                 </CardHeader>

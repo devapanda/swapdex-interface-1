@@ -19,7 +19,7 @@ import { CancelOrderButtonContainer } from './cancel_order_button';
 const OrderHistoryCard = styled(Card)`
     height: 100%;
     overflow: auto;
-    padding: 10px;
+    padding: 0;
     @media (max-width: ${themeBreakPoints.sm}) {
         margin-top: 10px;
         max-height: 400px;
@@ -118,7 +118,7 @@ class OrderHistory extends React.Component<Props> {
             }
         }
 
-        return <OrderHistoryCard title="Open Orders">{content}</OrderHistoryCard>;
+        return <OrderHistoryCard title="Open Orders" headerPadding="5px">{content}</OrderHistoryCard>;
     };
 }
 
