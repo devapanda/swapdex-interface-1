@@ -36,7 +36,7 @@ const CardHeader = styled.div<{padding?: string}>`
     justify-content: space-between;
     text-transform: uppercase;
     letter-spacing: 0.03rem;
-    padding: ${props => props.padding || '10px'};
+    padding: ${props => props.padding || '15px'};
 `;
 
 const CardTitle = styled.h1`
@@ -56,6 +56,7 @@ const CardBody = styled.div<{ minHeightBody?: string; disableOverflowBody?: bool
     overflow-y: ${props => (props.disableOverflowBody ? 'hidden' : 'auto')};
     padding: ${themeDimensions.verticalPadding} ${themeDimensions.horizontalPadding};
     position: relative;
+    padding:15px;
 `;
 
 CardBody.defaultProps = {
