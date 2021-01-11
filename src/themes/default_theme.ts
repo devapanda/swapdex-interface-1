@@ -92,6 +92,7 @@ const lightThemeColors: ThemeProperties = {
     modalSearchFieldBorderColor: '#fff',
     modalSearchFieldPlaceholderColor: '#DEDEDE',
     modalSearchFieldTextColor: '#000',
+    modalTextColorCommon: '#000',
     myWalletLinkColor: '#333333',
     notificationActive: '#F8F8F8',
     notificationIconColor: '#474747',
