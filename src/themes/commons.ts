@@ -97,6 +97,7 @@ export interface ThemeProperties {
     marketStatsTDFontSize?: string;
     marketDetailsTHFontSize?: string;
     marketDetailsTDFontSize?: string;
+    modalTextColorCommon?: string;
     tableBorderColor: string;
     tdColor: string;
     tdFontSize: string;

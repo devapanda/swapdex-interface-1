@@ -30,7 +30,7 @@ const ModalContent = styled.div`
 `;
 
 const ModalTitle = styled.h1`
-    color: ${props => props.theme.componentsTheme.textColorCommon};
+    color: ${props => props.theme.componentsTheme.modalTextColorCommon};
     font-size: 20px;
     font-weight: 600;
     line-height: 1.2;
@@ -68,7 +68,7 @@ const LinkButton = styled.a`
 `;
 
 const MobileText = styled.p`
-    color: ${props => props.theme.componentsTheme.buttonTextColor};
+    color: ${props => props.theme.componentsTheme.modalTextColorCommon};
     text-decoration: none;
     text-align: left;
 `;
