@@ -24,6 +24,8 @@ const Content = styled.div`
     flex-direction: column;
     justify-content: center;
     padding: 20px ${themeDimensions.horizontalPadding};
+    max-width:800px;
+    width:100%;
 `;
 
 const ButtonsContainer = styled.div`
@@ -124,15 +126,18 @@ const UserWizardForm = (_props) => {
     };
 
     const handleDefault = async () => {
-        const configDefault = configFile;
-        configDefault.tokens.forEach((t: any) => {
-            t.mainnetAddress = t.addresses['1'];
-        });
-        dispatch(setUserConfigData({ config: configDefault }));
-        dispatch(initUserConfigData());
-        dispatch(setUserConfigData(null));
-        alert('Reset to defaults');
-        dispatch(goToHome());
+        if ( window.confirm('Are you sure you want to reset to defaults?') ) {
+            const configDefault = configFile;
+            configDefault.tokens.forEach((t: any) => {
+                t.mainnetAddress = t.addresses['1'];
+            });
+            dispatch(setUserConfigData({config: configDefault}));
+            dispatch(initUserConfigData());
+            dispatch(setUserConfigData(null));
+            dispatch(goToHome());
+        } else {
+            return false;
+        }
     };
 
     const content = (

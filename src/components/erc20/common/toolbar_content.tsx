@@ -136,8 +136,6 @@ const ToolbarContent = (props: Props) => {
     const location = useLocation();
     const isHome = location.pathname === ERC20_APP_BASE_PATH || location.pathname === `${ERC20_APP_BASE_PATH}/`;
 
-    console.log(theme);
-
     const logo = generalConfig && generalConfig.icon ? (
         <LogoIcon icon={theme.logo || generalConfig.icon}
             width={isMobile(window.innerWidth) ? '185px' : '200px'}/>

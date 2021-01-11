@@ -19,8 +19,6 @@ const Content = styled.div`
     display: flex;
     flex-direction: column;
     padding: 10px;
-    max-height: 430px;
-    overflow: auto;
 `;
 
 const TabsContainer = styled.div`

@@ -57,9 +57,6 @@ const TDHealthFactor = styled(CustomTD)<HealthProps>`
 `;
 
 const DefiGlobalCard = styled(Card)`
-    @media (min-width: ${themeBreakPoints.md}) {
-        max-height: 100px;
-    }
     margin: 2px;
     min-height: 20px;
 `;

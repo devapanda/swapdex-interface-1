@@ -107,6 +107,8 @@ const WalletDefiLendingCard = styled(CardBase)``;
 const Settings = styled.div`
     display: flex;
     justify-content: space-between;
+    padding:15px;
+    background: ${props => props.theme.componentsTheme.cardHeaderBackgroundColor};
 `;
 const SettingsItem = styled.div`
     display: flex;
@@ -132,6 +134,10 @@ const Label = styled.label<{ color?: string }>`
 `;
 const InnerTabs = styled(CardTabSelector)`
     font-size: 12px;
+`;
+
+const TableContainer = styled.div`
+    padding:15px;
 `;
 
 export const WalletDefiLendingBalances = () => {
@@ -535,10 +541,12 @@ export const WalletDefiLendingBalances = () => {
                         </SettingsItem>
                     </Settings>
 
-                    <Table isResponsive={true}>
-                        {tokensRows()}
-                        {/*totalHoldingsRow()*/}
-                    </Table>
+                    <TableContainer>
+                        <Table isResponsive={true}>
+                            {tokensRows()}
+                            {/*totalHoldingsRow()*/}
+                        </Table>
+                    </TableContainer>
                     {isModalOpenState && aTokenDataState && (
                         <DefiLendingTokenModal
                             isOpen={isModalOpenState}
@@ -580,24 +588,26 @@ export const WalletDefiLendingBalances = () => {
                         </SettingsItem>
                     </Settings>
 
-                    <Table isResponsive={true}>
-                        <THead>
-                            <TR>
-                                <THStyled>Token</THStyled>
-                                <THStyled>{}</THStyled>
+                    <TableContainer>
+                        <Table isResponsive={true}>
+                            <THead>
+                                <TR>
+                                    <THStyled>Token</THStyled>
+                                    <THStyled>{}</THStyled>
 
-                                <THStyled styles={{ textAlign: 'right' }}>Balance</THStyled>
-                                <THStyled styles={{ textAlign: 'right' }}>Deposit Balance</THStyled>
-                                <THStyled styles={{ textAlign: 'right' }}>APY</THStyled>
-                                <THLast styles={{ textAlign: 'center' }}>Actions</THLast>
-                            </TR>
-                        </THead>
-                        <TBody>
-                            {/*totalEthRow*/}
-                            {tokensRows()}
-                            {/*totalHoldingsRow()*/}
-                        </TBody>
-                    </Table>
+                                    <THStyled styles={{ textAlign: 'right' }}>Balance</THStyled>
+                                    <THStyled styles={{ textAlign: 'right' }}>Deposit Balance</THStyled>
+                                    <THStyled styles={{ textAlign: 'right' }}>APY</THStyled>
+                                    <THLast styles={{ textAlign: 'center' }}>Actions</THLast>
+                                </TR>
+                            </THead>
+                            <TBody>
+                                {/*totalEthRow*/}
+                                {tokensRows()}
+                                {/*totalHoldingsRow()*/}
+                            </TBody>
+                        </Table>
+                    </TableContainer>
                     {isModalOpenState && aTokenDataState && (
                         <DefiLendingTokenModal
                             isOpen={isModalOpenState}

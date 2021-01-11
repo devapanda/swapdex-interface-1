@@ -40,7 +40,7 @@ const lightThemeColors: ThemeProperties = {
     buttonConvertBorderColor: '#dedede',
     buttonConvertTextColor: '#474747',
     buttonErrorBackgroundColor: '#FF6534',
-    buttonPrimaryBackgroundColor: '#002979',
+    buttonPrimaryBackgroundColor: '#f53e82',
     buttonQuaternaryBackgroundColor: '#00AE99',
     buttonSecondaryBackgroundColor: '#474747',
     buttonSellBackgroundColor: '#FF6534',

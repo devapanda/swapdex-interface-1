@@ -16,6 +16,7 @@ const ColumnWideMyWallet = styled(ColumnWide)`
     &:first-child {
         @media (min-width: ${themeBreakPoints.xl}) {
             margin-right: 0px;
+            margin-left:0px;
         }
     }
 
