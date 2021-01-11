@@ -94,8 +94,8 @@ export default function SlippageTabs({ rawSlippage, setRawSlippage, deadline, se
 
     const [slippageInput, setSlippageInput] = useState('');
 
-    console.log((rawSlippage / 100).toFixed(2));
-    console.log(Number.parseFloat(slippageInput).toFixed(2));
+    //console.log((rawSlippage / 100).toFixed(2));
+    //console.log(Number.parseFloat(slippageInput).toFixed(2));
 
     const slippageInputIsValid =
         slippageInput === '' || (rawSlippage / 100).toFixed(2) === Number.parseFloat(slippageInput).toFixed(2)
