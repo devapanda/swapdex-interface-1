@@ -15,25 +15,23 @@ enum SlippageError {
 
 const FancyButton = styled.button`
   align-items: center;
-  height: 2rem;
-  border-radius: 36px;
-  font-size: 12px;
-  width: auto;
-  max-width: 4rem;
-  border: 1px solid ${({ theme }) => theme.bg3};
+  border-radius: 1rem;
+  font-size: 1rem;
+  border: 1px solid #db76b5;
   outline: none;
   background: #E8EDF6;
+  padding:5px 15px;
   :hover {
-    border: 1px solid #3b5998;
+    border: 1px solid #db76b5;
   }
   :focus {
-    border: 1px solid #3b5998;
+    border: 1px solid #db76b5;
   }
 `
 
 const Option = styled(FancyButton)<{ active: boolean }>`
   margin-right: 1rem;
-  font-size: 20px;
+  font-size: 1rem;
   :hover {
     cursor: pointer;
   }
@@ -68,10 +66,12 @@ const OptionCustom = styled(FancyButton)<{ active?: boolean; warning?: boolean }
   }
 
   input {
-    width: 3rem;
+    width: 100%;
     height: 100%;
     border: 0px;
     border-radius: 2rem;
+    padding-right: 25px;
+    outline:none;
   }
   
   span {
@@ -79,6 +79,12 @@ const OptionCustom = styled(FancyButton)<{ active?: boolean; warning?: boolean }
     right: 5px;
   }
 `
+
+const SlippageLabel = styled.div`
+    margin: 0;
+    font-weight: 400;
+    color: #ccc;
+`;
 
 export interface SlippageTabsProps {
     rawSlippage: number
@@ -126,9 +132,9 @@ export default function SlippageTabs({ rawSlippage, setRawSlippage, deadline, se
         <AutoColumn gap="md" style={{ marginBottom: '1rem' }}>
             <AutoColumn gap="sm">
                 <RowBetween>
-                    <TYPE.italic fontWeight={400} fontSize={20} color={theme.text2}>
+                    <SlippageLabel>
                         Slippage
-                    </TYPE.italic>
+                    </SlippageLabel>
                     <Option
                         onClick={() => {
                             setSlippageInput('')
