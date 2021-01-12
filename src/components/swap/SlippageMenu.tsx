@@ -17,24 +17,22 @@ const FancyButton = styled.button`
   align-items: center;
   border-radius: 1rem;
   font-size: 1rem;
-  border: 1px solid #db76b5;
+  border: 1px solid #c06ea1;
   outline: none;
   background: #E8EDF6;
-  padding:5px 15px;
+  padding:6px 15px;
   :hover {
-    border: 1px solid #db76b5;
+    border: 1px solid #c06ea1;
   }
   :focus {
-    border: 1px solid #db76b5;
+    border: 1px solid #c06ea1;
   }
 `
 
 const Option = styled(FancyButton)<{ active: boolean }>`
   margin-right: 1rem;
   font-size: 1rem;
-  :hover {
-    cursor: pointer;
-  }
+  cursor:pointer;
   background-color: ${({ active, theme }) => active && '#bd006a'};
   color: ${({ active, theme }) => (active ? theme.white : '#7C7C7C')};
 `
@@ -100,15 +98,11 @@ export default function SlippageTabs({ rawSlippage, setRawSlippage, deadline, se
 
     const [slippageInput, setSlippageInput] = useState('');
 
-    //console.log((rawSlippage / 100).toFixed(2));
-    //console.log(Number.parseFloat(slippageInput).toFixed(2));
-
     const slippageInputIsValid =
         slippageInput === '' || (rawSlippage / 100).toFixed(2) === Number.parseFloat(slippageInput).toFixed(2)
 
     let slippageError: SlippageError | undefined
     if (slippageInput !== '' && !slippageInputIsValid) {
-        console.log(rawSlippage + ' === ' + (Number.parseFloat(slippageInput).toFixed(2)));
         slippageError = SlippageError.InvalidInput
     } else if (slippageInputIsValid && rawSlippage < 50) {
         slippageError = SlippageError.RiskyLow
@@ -133,7 +127,7 @@ export default function SlippageTabs({ rawSlippage, setRawSlippage, deadline, se
             <AutoColumn gap="sm">
                 <RowBetween>
                     <SlippageLabel>
-                        Slippage ({rawSlippage})
+                        Slippage
                     </SlippageLabel>
                     <Option
                         onClick={() => {
@@ -153,6 +147,15 @@ export default function SlippageTabs({ rawSlippage, setRawSlippage, deadline, se
                         active={rawSlippage === 50}
                     >
                         0.5%
+                    </Option>
+                    <Option
+                        onClick={() => {
+                            setSlippageInput('')
+                            setRawSlippage(100)
+                        }}
+                        active={rawSlippage === 100}
+                    >
+                        1.0%
                     </Option>
                     <OptionCustom active={![10, 50, 100].includes(rawSlippage)} warning={!slippageInputIsValid} tabIndex={-1}>
                         <RowBetween>
