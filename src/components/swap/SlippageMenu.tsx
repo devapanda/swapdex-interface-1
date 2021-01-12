@@ -108,6 +108,7 @@ export default function SlippageTabs({ rawSlippage, setRawSlippage, deadline, se
 
     let slippageError: SlippageError | undefined
     if (slippageInput !== '' && !slippageInputIsValid) {
+        console.log(rawSlippage + ' === ' + (Number.parseFloat(slippageInput).toFixed(2)));
         slippageError = SlippageError.InvalidInput
     } else if (slippageInputIsValid && rawSlippage < 50) {
         slippageError = SlippageError.RiskyLow
@@ -120,9 +121,8 @@ export default function SlippageTabs({ rawSlippage, setRawSlippage, deadline, se
     function parseCustomSlippage(value: string) {
         setSlippageInput(value)
         try {
-            const valueAsIntFromRoundedFloat = Number.parseInt((Number.parseFloat(value) * 100).toString())
+            const valueAsIntFromRoundedFloat = Number.parseInt(Math.round(Number.parseFloat(value) * 100).toString())
             if (!Number.isNaN(valueAsIntFromRoundedFloat) && valueAsIntFromRoundedFloat < 5000) {
-                console.log('setRawSlippage:'+(valueAsIntFromRoundedFloat));
                 setRawSlippage(valueAsIntFromRoundedFloat)
             }
         } catch {}
@@ -133,7 +133,7 @@ export default function SlippageTabs({ rawSlippage, setRawSlippage, deadline, se
             <AutoColumn gap="sm">
                 <RowBetween>
                     <SlippageLabel>
-                        Slippage
+                        Slippage ({rawSlippage})
                     </SlippageLabel>
                     <Option
                         onClick={() => {
@@ -159,6 +159,7 @@ export default function SlippageTabs({ rawSlippage, setRawSlippage, deadline, se
                             {/* https://github.com/DefinitelyTyped/DefinitelyTyped/issues/30451 */}
                             <Input
                                 ref={inputRef as any}
+                                value={slippageInput}
                                 placeholder={(rawSlippage / 100).toFixed(2)}
                                 onFocus={e => e.target.select()}
                                 onChange={e => {
