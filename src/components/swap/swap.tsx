@@ -1,9 +1,9 @@
 import {INITIAL_ALLOWED_SLIPPAGE} from './constants'
-import {MarketBuySwapQuote, MarketSellSwapQuote} from '@0x/asset-swapper';
-import {BigNumber} from '@0x/utils';
+//import {MarketBuySwapQuote, MarketSellSwapQuote} from '@0x/asset-swapper';
+//import {BigNumber} from '@0x/utils';
 import React, {useCallback, useContext, useEffect, useMemo, useState} from 'react';
-import {connect, useDispatch, useSelector} from 'react-redux';
-import {useLocation} from 'react-router';
+//import {connect, useDispatch, useSelector} from 'react-redux';
+//import {useLocation} from 'react-router';
 import styled, {useTheme} from 'styled-components';
 import {isMobile} from "react-device-detect";
 import ReactGA from 'react-ga'
@@ -28,7 +28,7 @@ import confirmPriceImpactWithoutFee from './confirmPriceImpactWithoutFee'
 import SlippageMenu from "./SlippageMenu";
 import {ArrowWrapper, BottomGrouping, SwapCallbackError, Wrapper} from './styleds'
 import TradePrice from './TradePrice'
-import TokenWarningModal from './TokenWarningModal'
+//import TokenWarningModal from './TokenWarningModal'
 import ProgressSteps from './ProgressSteps'
 import {useExpertModeManager, useUserDeadline, useUserSlippageTolerance} from './state/user/hooks'
 import {useCurrency} from './hooks/Tokens'
@@ -75,6 +75,122 @@ const InputPanelWrapper = styled.div`
       flex-direction: column;
     `};
   `;
+
+
+const RoundedWrapper = styled.div`
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 100px 100px 0 0;
+    background-color: ${props => props.theme.componentsTheme.swapCardBackgroundColor};
+    width: 150px;
+    height: 80px;
+    margin-top: -4rem;
+    z-index: 3;
+    position: relative;
+    -webkit-box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.2);  /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
+    -moz-box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.2);   /* Firefox 3.5 - 3.6 */
+    box-shadow: -10px -8px 10px rgba(0, 0, 0, 0.05);
+
+    img {
+      margin-top: 3rem;
+    }
+
+    ${({theme}) => theme.mediaWidth.upToMedium`
+      flex-direction: column;
+      width: 6rem;
+      height: 6rem;
+      border-radius: 100%;
+      margin-top: -2.5rem;
+
+      img {
+        margin-top: 0.25rem;
+      }
+
+      #swap-circle {
+        width: 5rem;
+        height: 5rem;
+      }
+
+      #swap-circle-logo {
+        width: 2rem;
+        height: 2rem;
+      }
+    `};
+  `
+
+const TransactionDetailsWrapper = styled.div`
+    
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
+    background-color: ${props => props.theme.componentsTheme.swapCardBackgroundColor};
+    padding: 30px;
+    -webkit-box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.2);  /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
+    -moz-box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.2);   /* Firefox 3.5 - 3.6 */
+    box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.2);
+    width:100%;
+    max-width:500px;
+
+    ${({theme}) => theme.mediaWidth.upToMedium`
+      display: none;
+    `};
+  `
+
+const MobileTransactionDetailsWrapper = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+    width:100%;
+  `
+
+const AssetsWrapper = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  `
+const AssetsHeader = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100px;
+    background-color: #3b5998;
+    color: #FFFFFF;
+    border-radius: 0 25px 25px 25px;
+    padding: 20px;
+    -webkit-box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.2);  /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
+    -moz-box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.2);   /* Firefox 3.5 - 3.6 */
+    box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.2);
+  `
+
+const AssetsContent = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100px;
+    background-color: #FFFFFF;
+    color: #3b5998;
+    border-radius: 25px 25px 25px 25px;
+    padding: 20px;
+    -webkit-box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.2);  /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
+    -moz-box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.2);   /* Firefox 3.5 - 3.6 */
+    box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.2);
+  `
+
+const WalletCircle = styled.div`
+    position: relative;
+
+    svg {
+      display: flex;
+    }
+  `
 
 export default function Swap() {
     const loadedUrlParams = useDefaultsFromURLSearch();
@@ -312,121 +428,6 @@ export default function Swap() {
     const handleDismissTransactionDetails = useCallback(() => {
         setModalOpen(false)
     }, [setModalOpen])
-
-    const RoundedWrapper = styled.div`
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 100px 100px 0 0;
-    background-color: ${props => props.theme.componentsTheme.swapCardBackgroundColor};
-    width: 150px;
-    height: 80px;
-    margin-top: -4rem;
-    z-index: 3;
-    position: relative;
-    -webkit-box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.2);  /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
-    -moz-box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.2);   /* Firefox 3.5 - 3.6 */
-    box-shadow: -10px -8px 10px rgba(0, 0, 0, 0.05);
-
-    img {
-      margin-top: 3rem;
-    }
-
-    ${({theme}) => theme.mediaWidth.upToMedium`
-      flex-direction: column;
-      width: 6rem;
-      height: 6rem;
-      border-radius: 100%;
-      margin-top: -2.5rem;
-
-      img {
-        margin-top: 0.25rem;
-      }
-
-      #swap-circle {
-        width: 5rem;
-        height: 5rem;
-      }
-
-      #swap-circle-logo {
-        width: 2rem;
-        height: 2rem;
-      }
-    `};
-  `
-
-    const TransactionDetailsWrapper = styled.div`
-    
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    border-radius: 20px;
-    background-color: ${props => props.theme.componentsTheme.swapCardBackgroundColor};
-    padding: 30px;
-    -webkit-box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.2);  /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
-    -moz-box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.2);   /* Firefox 3.5 - 3.6 */
-    box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.2);
-    width:100%;
-    max-width:500px;
-
-    ${({theme}) => theme.mediaWidth.upToMedium`
-      display: none;
-    `};
-  `
-
-    const MobileTransactionDetailsWrapper = styled.div`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 30px;
-    width:100%;
-  `
-
-    const AssetsWrapper = styled.div`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  `
-    const AssetsHeader = styled.div`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 100px;
-    background-color: #3b5998;
-    color: #FFFFFF;
-    border-radius: 0 25px 25px 25px;
-    padding: 20px;
-    -webkit-box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.2);  /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
-    -moz-box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.2);   /* Firefox 3.5 - 3.6 */
-    box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.2);
-  `
-
-    const AssetsContent = styled.div`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 100px;
-    background-color: #FFFFFF;
-    color: #3b5998;
-    border-radius: 25px 25px 25px 25px;
-    padding: 20px;
-    -webkit-box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.2);  /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
-    -moz-box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.2);   /* Firefox 3.5 - 3.6 */
-    box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.2);
-  `
-
-    const WalletCircle = styled.div`
-    position: relative;
-
-    svg {
-      display: flex;
-    }
-  `
 
     /*  const isListed = baseToken ? baseToken.listed : true;
     const msg = 'Token inserted by User. Please proceed with caution and do your own research!';*/
