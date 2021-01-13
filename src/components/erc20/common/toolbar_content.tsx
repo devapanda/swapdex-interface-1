@@ -83,7 +83,7 @@ const WalletDropdown = styled(WalletConnectionContentContainer)`
 
         ${separatorTopbar}
     }
-    
+
     &:hover {
         border: 1px solid #ccc;
     }
@@ -260,7 +260,7 @@ const ToolbarContent = (props: Props) => {
                 <StyledLink href="/fiat-onramp" onClick={handleFiatModal} className={'defi'}>
                     Fiat
                 </StyledLink>
-                <StyledLink href="/analytics" onClick={handleAnalyticsClick} className={'defi'}>
+                <StyledLink href="https://analytics.swapdex.net" className={'analytics'}>
                     Analytics
                 </StyledLink>
                 {/*
