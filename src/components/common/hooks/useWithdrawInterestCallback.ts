@@ -19,7 +19,7 @@ export function useUnstakeCallback (
   //todo - call staking contract and submit eth tx to remove USDX tokens from staking contract and send to holder address
 
   return {
-    state: StakeCallbackStateWithdrawInterestCallbackState.SUCCESS,
+    state: WithdrawInterestCallbackState.SUCCESS,
     callback: null,
     error: null
   }
