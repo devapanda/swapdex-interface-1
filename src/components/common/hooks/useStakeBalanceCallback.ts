@@ -11,7 +11,7 @@ export interface StakeBalances {
 }
 
 export interface StakeBalanceCall {
-  state: UnstakeCallbackState
+  state: StakeBalanceCallbackState
   callback: null | (() => Promise<StakeBalances>);
   error: string | null
 }
