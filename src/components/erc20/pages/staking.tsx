@@ -5,7 +5,7 @@ import { InjectedConnector } from '@web3-react/injected-connector';
 import { themeBreakPoints } from '../../../themes/commons';
 import { ColumnWide } from '../../common/column_wide';
 import { Content } from '../common/content_wrapper';
-import { Swap } from '../../swap/swap';
+import { Staking } from '../../staking/staking';
 import { Provider } from 'react-redux'
 import store from '../../../store'
 import ThemeProvider, { FixedGlobalStyle, ThemedGlobalStyle } from '../../swap/theme'
@@ -45,19 +45,7 @@ export const CenteredContent = styled(Content as any)`
     background-color : ${props => props.theme.componentsTheme.background};
 `;
 
-export function Updaters() {
-  return (
-    <>
-      <ListsUpdater />
-      <UserUpdater />
-      <ApplicationUpdater />
-      <TransactionUpdater />
-      <MulticallUpdater />
-    </>
-  )
-}
-
-const SwapPage = () => {
+const StakingPage = () => {
     return (
         <ThemeProvider>
             <ThemedGlobalStyle/>
@@ -65,9 +53,8 @@ const SwapPage = () => {
                 <Web3ReactProvider getLibrary={getLibrary}>
                     <Web3ProviderNetwork getLibrary={getLibrary}>
                         <Provider store={store}>
-                        <Updaters />
                             <CenteredContent>
-                                <Swap/>
+                                <Staking />
                             </CenteredContent>
                         </Provider>
                     </Web3ProviderNetwork>
@@ -77,4 +64,4 @@ const SwapPage = () => {
     );
 };
 
-export { SwapPage as default };
+export { StakingPage as default };

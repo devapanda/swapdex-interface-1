@@ -47,6 +47,7 @@ const Erc721App = lazy(() => import('./components/erc721/erc721_app'));
 const FiatApp = lazy(() => import('./components/erc20/fiat_ramp_app'));
 const MarketTradeApp = lazy(() => import('./components/erc20/market_trade_app'));
 const PoolApp = lazy(() => import('./components/erc20/pool_app'));
+const StakingApp = lazy(() => import('./components/erc20/staking_app'));
 const Web3WrappedApp = (
     <Provider store={store}>
         <ConnectedRouter history={history}>
@@ -62,7 +63,7 @@ const Web3WrappedApp = (
                         <Route path={FIAT_RAMP_APP_BASE_PATH} component={FiatApp} />
                         <Route path={MARKET_APP_BASE_PATH} component={MarketTradeApp} />
                         <Route path={POOL_APP_BASE_PATH} component={PoolApp} />
-                        <Route path={STAKING_APP_BASE_PATH} component={Erc20App} />
+                        <Route path={STAKING_APP_BASE_PATH} component={StakingApp} />
                         <Route path={USDX_APP_BASE_PATH} component={Erc20App} />
                         <Route path={ANALYTICS_APP_BASE_PATH} component={Erc20App} />
                         <Route component={RedirectToHome} />

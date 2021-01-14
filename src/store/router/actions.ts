@@ -8,6 +8,7 @@ import {
     LAUNCHPAD_APP_BASE_PATH,
     MARGIN_APP_BASE_PATH,
     MARKET_APP_BASE_PATH,
+    STAKING_APP_BASE_PATH
 } from '../../common/constants';
 import { CollectibleFilterType } from '../../util/filterable_collectibles';
 import { CollectibleSortType } from '../../util/sortable_collectibles';
@@ -99,6 +100,19 @@ export const goToHomeDefi: ThunkCreator = () => {
             push({
                 ...state.router.location,
                 pathname: `${DEFI_APP_BASE_PATH}`,
+            }),
+        );
+    };
+};
+
+export const goToHomeStaking: ThunkCreator = () => {
+    return async (dispatch, getState) => {
+        const state = getState();
+
+        dispatch(
+            push({
+                ...state.router.location,
+                pathname: `${STAKING_APP_BASE_PATH}`,
             }),
         );
     };

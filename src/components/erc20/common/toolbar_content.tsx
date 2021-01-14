@@ -12,6 +12,7 @@ import {
     changeSwapQuoteToken,
     goToHome,
     goToHomeDefi,
+    goToHomeStaking,
     goToHomeMarketTrade,
     goToWallet,
     openFiatOnRampModal,
@@ -46,6 +47,7 @@ interface DispatchProps {
     onGoToWallet: () => any;
     onGoToHomeMarketTrade: () => any;
     onGoToHomeDefi: () => any;
+    onGoToHomeStaking: () => any;
 }
 
 interface OwnProps {
@@ -185,6 +187,7 @@ const ToolbarContent = (props: Props) => {
 
     const handleStakingClick: React.EventHandler<React.MouseEvent> = e => {
         e.preventDefault();
+        props.onGoToHomeStaking();
     };
     const handleFiatClick: React.EventHandler<React.MouseEvent> = e => {
         e.preventDefault();
@@ -248,7 +251,7 @@ const ToolbarContent = (props: Props) => {
                 <StyledLink href="/swap" onClick={handleMarketTradeClick} className={'market-trade'}>
                     Swap
                 </StyledLink>
-                <StyledLink href="/staking" onClick={handleStakingClick} className={'defi'}>
+                <StyledLink href="/staking" onClick={handleStakingClick} className={'staking-app'}>
                     Staking
                 </StyledLink>
                 <StyledLink href="/defi" onClick={handleDefiClick} className={'defi'}>
@@ -299,6 +302,7 @@ const mapDispatchToProps = (dispatch: any): DispatchProps => {
         onGoToWallet: () => dispatch(goToWallet()),
         onGoToHomeMarketTrade: () => dispatch(goToHomeMarketTrade()),
         onGoToHomeDefi: () => dispatch(goToHomeDefi()),
+        onGoToHomeStaking: () => dispatch(goToHomeStaking()),
     };
 };
 

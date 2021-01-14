@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import { Route, Switch } from 'react-router';
 import { ThemeProvider } from 'styled-components';
 
-import { MARKET_APP_BASE_PATH } from '../../common/constants';
+import { STAKING_APP_BASE_PATH } from '../../common/constants';
 import { getERC20Theme } from '../../store/selectors';
 import { AdBlockDetector } from '../common/adblock_detector';
 import { PageLoading } from '../common/page_loading';
@@ -13,9 +13,9 @@ import ToolbarContentContainer from './common/toolbar_content';
 
 const toolbar = <ToolbarContentContainer />;
 
-const Swap = lazy(() => import('./pages/swap'));
+const StakingPage = lazy(() => import('./pages/staking'));
 
-const SwapApp = () => {
+const StakingApp = () => {
     const themeColor = useSelector(getERC20Theme);
     return (
         <ThemeProvider theme={themeColor as any}>
@@ -23,7 +23,7 @@ const SwapApp = () => {
                 <AdBlockDetector />
                 <Switch>
                     <Suspense fallback={<PageLoading />}>
-                        <Route exact={true} path={`${MARKET_APP_BASE_PATH}/`} component={Swap} />
+                        <Route exact={true} path={`${STAKING_APP_BASE_PATH}/`} component={StakingPage} />
                     </Suspense>
                 </Switch>
             </GeneralLayoutContainer>
@@ -31,4 +31,4 @@ const SwapApp = () => {
     );
 };
 
-export { SwapApp as default };
+export { StakingApp as default };
