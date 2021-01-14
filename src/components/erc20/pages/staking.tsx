@@ -11,6 +11,7 @@ import store from '../../../store'
 import ThemeProvider, { FixedGlobalStyle, ThemedGlobalStyle } from '../../swap/theme'
 import getLibrary from '../../swap/utils/getLibrary'
 import { NetworkContextName } from '../../swap/constants'
+import { Web3ProviderNetwork } from '../../../index'
 import { CheckWalletStateModalContainer } from '../../common/check_wallet_state_modal_container';
 import {Web3ReactContextInterface} from "@web3-react/core/dist/types";
 import {Web3Provider} from "@ethersproject/providers";
@@ -20,8 +21,6 @@ import ListsUpdater from '../../swap/state/lists/updater'
 import MulticallUpdater from '../../swap/state/multicall/updater'
 import TransactionUpdater from '../../swap/state/transactions/updater'
 import UserUpdater from '../../swap/state/user/updater'
-
-export const Web3ProviderNetwork = createWeb3ReactRoot(NetworkContextName);
 
 export const ColumnWideMyWallet = styled(ColumnWide)`
     margin-left: 0;

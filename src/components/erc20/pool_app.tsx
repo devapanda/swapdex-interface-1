@@ -23,7 +23,8 @@ import RemoveLiquidity from '../swap/RemoveLiquidity'
 import { RedirectOldRemoveLiquidityPathStructure } from '../swap/RemoveLiquidity/redirects'
 
 import { CheckWalletStateModalContainer } from '../common/check_wallet_state_modal_container';
-import { Web3ProviderNetwork, ColumnWideMyWallet, CenteredContent, Updaters } from './pages/swap'
+import { ColumnWideMyWallet, CenteredContent, Updaters } from './pages/swap'
+import { Web3ProviderNetwork } from '../../index'
 import ThemeProvider, { FixedGlobalStyle, ThemedGlobalStyle } from '../swap/theme'
 import { useWeb3React, Web3ReactProvider } from '@web3-react/core'
 import { Provider } from 'react-redux'

@@ -40,37 +40,43 @@ export function Staking() {
 
   return (
     <>
-        <Wrapper id="pool-page" style={{ display: 'flex', flexDirection: 'column', width: '75%' }}>
+        <Wrapper id="staking-page" style={{ display: 'flex', flexDirection: 'column', width: '75%' }}>
           <AutoColumn gap="lg" justify="center">
-            <ButtonPrimary id="join-pool-button" as={Link} style={{ padding: 16 }} to="/pool/add/ETH">
+          <AutoColumn gap="12px" style={{ width: '100%' }}>
+            <RowBetween padding={'0 8px'}>
+              <Text color={theme.componentsTheme.backgroundTextColor} fontWeight={500}>
+                Your Balance
+              </Text>
+              <Question text="When you stake SDX you will earn interest in the USDX stablecoin." />
+            </RowBetween>
+
+            <LightCard padding="40px">
+              <TYPE.body color={theme.text3} textAlign="right" padding="10px">
+                Staked SDX Balance: 1234
+              </TYPE.body>
+              <TYPE.body color={theme.text3} textAlign="right" padding="10px">
+                USDX Balance (Interest Earned): 5678
+              </TYPE.body>
+            </LightCard>
+          </AutoColumn>
+
+            <ButtonPrimary id="stake-button" as={Link} style={{ padding: 16 }} to="/pool/add/ETH">
               <Text fontWeight={500} fontSize={20}>
-                Add Liquidity
+                Stake SDX
               </Text>
             </ButtonPrimary>
 
-            <AutoColumn gap="12px" style={{ width: '100%' }}>
-              <RowBetween padding={'0 8px'}>
-                <Text color={theme.componentsTheme.backgroundTextColor} fontWeight={500}>
-                  Your Liquidity
-                </Text>
-                <Question text="When you add liquidity, you are given pool tokens that represent your share. If you don’t see a pool you joined in this list, try importing a pool below." />
-              </RowBetween>
+            <ButtonPrimary id="withdraw-stake-button" as={Link} style={{ padding: 16 }} to="/pool/add/ETH">
+              <Text fontWeight={500} fontSize={20}>
+                Withdraw SDX
+              </Text>
+            </ButtonPrimary>
 
-              <LightCard padding="40px">
-                <TYPE.body color={theme.text3} textAlign="center">
-                  Connect to a wallet to view your liquidity.
-                </TYPE.body>
-              </LightCard>
-
-              <div>
-                <Text textAlign="center" color={theme.componentsTheme.backgroundTextColor} fontSize={14} style={{ padding: '.5rem 0 .5rem 0' }}>
-                  {"Don't see a pool you joined?"}{' '}
-                  <StyledInternalLink id="import-pool-link" to={'/find'}>
-                    {'Import it.'}
-                  </StyledInternalLink>
-                </Text>
-              </div>
-            </AutoColumn>
+            <ButtonPrimary id="withdraw-interest-button" as={Link} style={{ padding: 16 }} to="/pool/add/ETH">
+              <Text fontWeight={500} fontSize={20}>
+                Withdraw USDX
+              </Text>
+            </ButtonPrimary>
           </AutoColumn>
         </Wrapper>
     </>

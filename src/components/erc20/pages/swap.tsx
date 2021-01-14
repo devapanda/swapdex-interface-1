@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { createWeb3ReactRoot, Web3ReactProvider} from '@web3-react/core';
+import { Web3ProviderNetwork } from '../../../index'
 import { themeBreakPoints } from '../../../themes/commons';
 import { ColumnWide } from '../../common/column_wide';
 import { Content } from '../common/content_wrapper';
@@ -16,8 +17,6 @@ import ListsUpdater from '../../swap/state/lists/updater'
 import MulticallUpdater from '../../swap/state/multicall/updater'
 import TransactionUpdater from '../../swap/state/transactions/updater'
 import UserUpdater from '../../swap/state/user/updater'
-
-export const Web3ProviderNetwork = createWeb3ReactRoot(NetworkContextName);
 
 export const ColumnWideMyWallet = styled(ColumnWide)`
     margin-left: 0;
@@ -38,7 +37,7 @@ export const ColumnWideMyWallet = styled(ColumnWide)`
 export const CenteredContent = styled(Content as any)`
     align-items: center;
     justify-content: center;
-    background-color : ${props => props.theme.componentsTheme.background}; 
+    background-color : ${props => props.theme.componentsTheme.background};
 `;
 
 export function Updaters() {

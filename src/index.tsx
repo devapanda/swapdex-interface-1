@@ -5,6 +5,8 @@ import ReactDOM from 'react-dom';
 import ReactModal from 'react-modal';
 import { Provider } from 'react-redux';
 import { Redirect, Route, Switch } from 'react-router-dom';
+import { createWeb3ReactRoot, Web3ReactProvider} from '@web3-react/core';
+import { NetworkContextName } from './components/swap/constants'
 import 'sanitize.css';
 
 import {
@@ -37,6 +39,8 @@ if (['development', 'production'].includes(process.env.NODE_ENV) && !window.loca
     // Log only the app constant id to the console
     window.localStorage.debug = `${LOGGER_ID}*`;
 }
+
+export const Web3ProviderNetwork = createWeb3ReactRoot(NetworkContextName);
 const RedirectToHome = () => <Redirect to={DEFAULT_BASE_PATH} />;
 
 const Erc20App = lazy(() => import('./components/erc20/erc20_app'));
