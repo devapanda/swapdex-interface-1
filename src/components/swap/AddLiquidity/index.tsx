@@ -67,6 +67,13 @@ const InputPanelsWrapper = styled.div`
       `};
   `
 
+const ButtonWrapper = styled.div`
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  `
+
 export default function AddLiquidity({
   match: {
     params: { currencyIdA, currencyIdB }
@@ -329,13 +336,6 @@ export default function AddLiquidity({
     },
     [currencyIdA, history, currencyIdB]
   )
-
-  const ButtonWrapper = styled.div`
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  `
 
   const handleDismissConfirmation = useCallback(() => {
     setShowConfirm(false)

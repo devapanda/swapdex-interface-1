@@ -15,28 +15,24 @@ enum SlippageError {
 
 const FancyButton = styled.button`
   align-items: center;
-  height: 2rem;
-  border-radius: 36px;
-  font-size: 12px;
-  width: auto;
-  max-width: 4rem;
-  border: 1px solid ${({ theme }) => theme.bg3};
+  border-radius: 1rem;
+  font-size: 1rem;
+  border: 1px solid #c06ea1;
   outline: none;
   background: #E8EDF6;
+  padding:6px 15px;
   :hover {
-    border: 1px solid #3b5998;
+    border: 1px solid #c06ea1;
   }
   :focus {
-    border: 1px solid #3b5998;
+    border: 1px solid #c06ea1;
   }
 `
 
 const Option = styled(FancyButton)<{ active: boolean }>`
   margin-right: 1rem;
-  font-size: 20px;
-  :hover {
-    cursor: pointer;
-  }
+  font-size: 1rem;
+  cursor:pointer;
   background-color: ${({ active, theme }) => active && '#bd006a'};
   color: ${({ active, theme }) => (active ? theme.white : '#7C7C7C')};
 `
@@ -68,10 +64,12 @@ const OptionCustom = styled(FancyButton)<{ active?: boolean; warning?: boolean }
   }
 
   input {
-    width: 3rem;
+    width: 100%;
     height: 100%;
     border: 0px;
     border-radius: 2rem;
+    padding-right: 25px;
+    outline:none;
   }
   
   span {
@@ -79,6 +77,12 @@ const OptionCustom = styled(FancyButton)<{ active?: boolean; warning?: boolean }
     right: 5px;
   }
 `
+
+const SlippageLabel = styled.div`
+    margin: 0;
+    font-weight: 400;
+    color: #ccc;
+`;
 
 export interface SlippageTabsProps {
     rawSlippage: number
@@ -93,9 +97,6 @@ export default function SlippageTabs({ rawSlippage, setRawSlippage, deadline, se
     const inputRef = useRef<HTMLInputElement>()
 
     const [slippageInput, setSlippageInput] = useState('');
-
-    //console.log((rawSlippage / 100).toFixed(2));
-    //console.log(Number.parseFloat(slippageInput).toFixed(2));
 
     const slippageInputIsValid =
         slippageInput === '' || (rawSlippage / 100).toFixed(2) === Number.parseFloat(slippageInput).toFixed(2)
@@ -114,9 +115,8 @@ export default function SlippageTabs({ rawSlippage, setRawSlippage, deadline, se
     function parseCustomSlippage(value: string) {
         setSlippageInput(value)
         try {
-            const valueAsIntFromRoundedFloat = Number.parseInt((Number.parseFloat(value) * 100).toString())
+            const valueAsIntFromRoundedFloat = Number.parseInt(Math.round(Number.parseFloat(value) * 100).toString())
             if (!Number.isNaN(valueAsIntFromRoundedFloat) && valueAsIntFromRoundedFloat < 5000) {
-                console.log('setRawSlippage:'+(valueAsIntFromRoundedFloat));
                 setRawSlippage(valueAsIntFromRoundedFloat)
             }
         } catch {}
@@ -126,9 +126,9 @@ export default function SlippageTabs({ rawSlippage, setRawSlippage, deadline, se
         <AutoColumn gap="md" style={{ marginBottom: '1rem' }}>
             <AutoColumn gap="sm">
                 <RowBetween>
-                    <TYPE.italic fontWeight={400} fontSize={20} color={theme.text2}>
+                    <SlippageLabel>
                         Slippage
-                    </TYPE.italic>
+                    </SlippageLabel>
                     <Option
                         onClick={() => {
                             setSlippageInput('')
@@ -148,11 +148,21 @@ export default function SlippageTabs({ rawSlippage, setRawSlippage, deadline, se
                     >
                         0.5%
                     </Option>
+                    <Option
+                        onClick={() => {
+                            setSlippageInput('')
+                            setRawSlippage(100)
+                        }}
+                        active={rawSlippage === 100}
+                    >
+                        1.0%
+                    </Option>
                     <OptionCustom active={![10, 50, 100].includes(rawSlippage)} warning={!slippageInputIsValid} tabIndex={-1}>
                         <RowBetween>
                             {/* https://github.com/DefinitelyTyped/DefinitelyTyped/issues/30451 */}
                             <Input
                                 ref={inputRef as any}
+                                value={slippageInput}
                                 placeholder={(rawSlippage / 100).toFixed(2)}
                                 onFocus={e => e.target.select()}
                                 onChange={e => {

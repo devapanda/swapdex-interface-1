@@ -109,7 +109,6 @@
             if (typeof s !== 'string') return ''
             return s.charAt(0).toUpperCase() + s.slice(1)
           }
-        window.loadingText = 'Dex Loading ...';
         const hostname =  window.location.hostname;
         const dexName = capitalize(hostname);
         const url = `https://${hostname}`;
@@ -118,7 +117,6 @@
         const title = `${dexName} — ERC20 trading, swap, defi, fiat-onramp and market maker tools`;
         const description = `${dexName} is an open-source decentralized ERC20  trading, swap, wallet, defi ready, and launchpad platform with market maker tools and integrated fiat-onramp. Easy onboarding for new users and no KYC required.`;
         document.title = title
-        document.getElementById('loadingText').textContent = `${dexName} loading ...`;
         document.querySelector('meta[name="title"]').setAttribute("content", title);
         document.querySelector('meta[name="description"]').setAttribute("content", description);
         document.querySelector('meta[property="twitter:url"]').setAttribute("content", url);
