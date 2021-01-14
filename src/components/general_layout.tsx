@@ -56,7 +56,7 @@ export const GeneralLayout = (props: Props) => {
                 sidebar={<MobileWalletConnectionContent />}
                 open={isSidebarOpen}
                 onSetOpen={setSidebarOpen}
-                styles={{ sidebar: { zIndex: '1000', top: '-10px' } }}
+                styles={{ sidebar: { zIndex: '1000', top: '-10px', background: '#141420' } }}
             >
                 <General {...restProps}>
                     {toolbar}
