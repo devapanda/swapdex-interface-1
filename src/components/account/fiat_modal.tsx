@@ -148,7 +148,7 @@ export const FiatOnRampModal: React.FC<{}> = props => {
         <Modal isOpen={isOpen} style={theme.modalTheme}>
             <CloseModalButton onClick={reset} />
             <ModalContent style={{ height: `${size.height}px` }}>
-                <Title>BUY ETH {toolTip}</Title>
+                <Title>Buy ETH {toolTip}</Title>
                 {isLoading && fiatType !== 'APPLE_PAY' && <LoadingWrapper minHeight="120px" />}
                 {fiatType === 'APPLE_PAY' ? (
                     <ApplePayLink href="/apple-pay" onClick={handleApplePay} className={'apple-pay'}>
