@@ -62,6 +62,7 @@ const DefiGlobalCard = styled(Card)`
 `;
 
 const TooltipStyled = styled(Tooltip)`
+    padding-left:3px;
     flex-wrap: wrap;
     display: inline;
     .reactTooltip {
