@@ -15,6 +15,7 @@ const Tabs = styled.div`
   justify-content: space-between;
   background-color: #FFFFFF;
   width: 30%;
+  max-width:500px;
   font-family: 'Montserrat', sans-serif;
   -webkit-box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.2);  /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
   -moz-box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.2);   /* Firefox 3.5 - 3.6 */

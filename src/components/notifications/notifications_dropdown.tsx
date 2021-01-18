@@ -68,7 +68,7 @@ const NotificationDropdownTitle = styled.h1`
     font-weight: 600;
     line-height: 1.2;
     margin: 0;
-    padding: 15px ${themeDimensions.horizontalPadding};
+    padding: 15px 15px;
 `;
 
 const NoNotifications = styled.div`

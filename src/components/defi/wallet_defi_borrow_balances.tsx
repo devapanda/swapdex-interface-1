@@ -113,6 +113,8 @@ const WalletDefiBorrowCard = styled(CardBase)``;
 const Settings = styled.div`
     display: flex;
     justify-content: space-between;
+    padding:15px;
+    background: ${props => props.theme.componentsTheme.cardHeaderBackgroundColor};
 `;
 const SettingsItem = styled.div`
     display: flex;
@@ -138,6 +140,10 @@ const Label = styled.label<{ color?: string }>`
 `;
 const InnerTabs = styled(CardTabSelector)`
     font-size: 12px;
+`;
+
+const TableContainer = styled.div`
+    padding:15px;
 `;
 
 export const WalletDefiBorrowBalances = () => {
@@ -496,7 +502,9 @@ export const WalletDefiBorrowBalances = () => {
                         </SettingsItem>
                     </Settings>
 
-                    <Table isResponsive={true}>{tokensRows()}</Table>
+                    <TableContainer>
+                        <Table isResponsive={true}>{tokensRows()}</Table>
+                    </TableContainer>
                     {modals}
 
                     <PStyled>Prices by Coingecko </PStyled>
@@ -525,24 +533,26 @@ export const WalletDefiBorrowBalances = () => {
                         </SettingsItem>
                     </Settings>
 
-                    <Table isResponsive={true}>
-                        <THead>
-                            <TR>
-                                <THStyled>Token</THStyled>
-                                <THStyled>{}</THStyled>
+                    <TableContainer>
+                        <Table isResponsive={true}>
+                            <THead>
+                                <TR>
+                                    <THStyled>Token</THStyled>
+                                    <THStyled>{}</THStyled>
 
-                                <THStyled styles={{ textAlign: 'right' }}>Available for Borrow</THStyled>
-                                <THStyled styles={{ textAlign: 'right' }}>Borrow Balance</THStyled>
-                                <THStyled styles={{ textAlign: 'right' }}>Borrow Rate</THStyled>
-                                <THLast styles={{ textAlign: 'center' }}>Actions</THLast>
-                            </TR>
-                        </THead>
-                        <TBody>
-                            {/*totalEthRow*/}
-                            {tokensRows()}
-                            {/*totalHoldingsRow()*/}
-                        </TBody>
-                    </Table>
+                                    <THStyled styles={{ textAlign: 'right' }}>Available for Borrow</THStyled>
+                                    <THStyled styles={{ textAlign: 'right' }}>Borrow Balance</THStyled>
+                                    <THStyled styles={{ textAlign: 'right' }}>Borrow Rate</THStyled>
+                                    <THLast styles={{ textAlign: 'center' }}>Actions</THLast>
+                                </TR>
+                            </THead>
+                            <TBody>
+                                {/*totalEthRow*/}
+                                {tokensRows()}
+                                {/*totalHoldingsRow()*/}
+                            </TBody>
+                        </Table>
+                    </TableContainer>
                     {modals}
                 </>
             );

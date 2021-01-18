@@ -1,20 +1,16 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import styled from 'styled-components';
-import { createWeb3ReactRoot, useWeb3React as useWeb3ReactCore, Web3ReactProvider} from '@web3-react/core';
-import { InjectedConnector } from '@web3-react/injected-connector';
+import { createWeb3ReactRoot, Web3ReactProvider} from '@web3-react/core';
 import { themeBreakPoints } from '../../../themes/commons';
 import { ColumnWide } from '../../common/column_wide';
 import { Content } from '../common/content_wrapper';
 import { Swap } from '../../swap/swap';
 import { Provider } from 'react-redux'
 import store from '../../../store'
-import ThemeProvider, { FixedGlobalStyle, ThemedGlobalStyle } from '../../swap/theme'
+import ThemeProvider, {ThemedGlobalStyle } from '../../swap/theme'
 import getLibrary from '../../swap/utils/getLibrary'
 import { NetworkContextName } from '../../swap/constants'
 import { CheckWalletStateModalContainer } from '../../common/check_wallet_state_modal_container';
-import {Web3ReactContextInterface} from "@web3-react/core/dist/types";
-import {Web3Provider} from "@ethersproject/providers";
-import {ChainId} from "@uniswap/sdk";
 import ApplicationUpdater from '../../swap/state/application/updater'
 import ListsUpdater from '../../swap/state/lists/updater'
 import MulticallUpdater from '../../swap/state/multicall/updater'
