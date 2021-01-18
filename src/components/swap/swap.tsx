@@ -1,4 +1,4 @@
-import {INITIAL_ALLOWED_SLIPPAGE} from './constants'
+import {DEFAULT_DEADLINE_FROM_NOW, INITIAL_ALLOWED_SLIPPAGE} from './constants'
 //import {MarketBuySwapQuote, MarketSellSwapQuote} from '@0x/asset-swapper';
 //import {BigNumber} from '@0x/utils';
 import React, {useCallback, useContext, useEffect, useMemo, useState} from 'react';
@@ -326,11 +326,18 @@ export default function Swap() {
     const maxAmountInput: CurrencyAmount | undefined = maxAmountSpend(currencyBalances[SwapField.INPUT])
     const atMaxAmountInput = Boolean(maxAmountInput && parsedAmounts[SwapField.INPUT]?.equalTo(maxAmountInput))
 
+    // TODO: Remove this for production
+    console.log('trade data', {
+        trade,
+        allowedSlippage,
+        deadline
+    });
+
     // the callback to execute the swap
     const {callback: swapCallback, error: swapCallbackError} = useSwapCallback(
         trade,
         allowedSlippage,
-        deadline,
+        DEFAULT_DEADLINE_FROM_NOW, //deadline,
         recipient
     )
 
