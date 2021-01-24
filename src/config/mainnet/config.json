@@ -16,7 +16,7 @@
         {
             "decimals": 7,
             "symbol": "sdx",
-            "name": "swapdex",
+            "name": "SwapDex",
             "primaryColor": "#081e6e",
             "icon": "assets/icons/sdx.svg",
             "addresses": {
@@ -25,7 +25,7 @@
             "id": "swapdex",
             "c_id": "swapdex",
             "displayDecimals": 0,
-            "description": "The transparent ecossystem that crypto needs!",
+            "description": "The transparent ecosystem that crypto needs!",
             "website": "https://www.swapdex.net",
             "isStableCoin": false
         },
