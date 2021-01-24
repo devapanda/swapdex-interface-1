@@ -34,7 +34,10 @@ const white = '#FFFFFF'
 const black = '#000000'
 
 export function colors(darkMode: boolean): Colors {
+  console.log('darkMode', darkMode);
   return {
+    darkMode,
+
     // base
     white,
     black,

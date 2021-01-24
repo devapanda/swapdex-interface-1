@@ -158,7 +158,7 @@ export const ButtonPink = styled(Base)`
 
 export const ButtonOutlined = styled(Base)`
   border: 1px solid ${({ theme }) => theme.bg2};
-  background-color: transparent;
+  background-color: rgba(255, 255, 255, 0.1);
   color: ${({ theme }) => theme.text1};
 
   &:focus {

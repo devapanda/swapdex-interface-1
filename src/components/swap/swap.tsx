@@ -52,19 +52,9 @@ import {maxAmountSpend} from './utils/maxAmountSpend'
 import {computeTradePriceBreakdown, warningSeverity} from './utils/prices'
 
 import {getTradeVersion} from './data/V1'
-import {InjectedConnector} from "@web3-react/injected-connector";
 import {Web3Provider} from "@ethersproject/providers";
 import {useWeb3React} from "@web3-react/core";
-
-const injectedConnector = new InjectedConnector({
-    supportedChainIds: [
-        1, // Mainet
-        3, // Ropsten
-        4, // Rinkeby
-        5, // Goerli
-        42, // Kovan
-    ],
-})
+import {injectedConnector} from "../../common/web3Connector";
 
 const InputPanelWrapper = styled.div`
     display: flex;
@@ -211,11 +201,10 @@ export default function Swap() {
 
     const theme = useTheme();
 
-    const { chainId, account, activate, active } = useWeb3React<Web3Provider>()
-    
+    const {account, activate} = useWeb3React<Web3Provider>()
     useEffect(() => {
         if ( !account ) {
-            activate(injectedConnector)
+            activate(injectedConnector);
         }
     });
 

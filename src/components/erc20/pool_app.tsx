@@ -60,6 +60,7 @@ const PoolApp = () => {
                                               <Route exact strict path={`${POOL_APP_BASE_PATH}/remove/v1/:address`} component={RemoveV1Exchange} />
                                               <Route exact strict path={`${POOL_APP_BASE_PATH}/remove/:tokens`} component={RedirectOldRemoveLiquidityPathStructure} />
                                               <Route exact strict path={`${POOL_APP_BASE_PATH}/remove/:currencyIdA/:currencyIdB`} component={RemoveLiquidity} />
+                                              <Route exact strict path={`${POOL_APP_BASE_PATH}/find`} component={PoolFinder} />
                                               <Route exact strict path={`${POOL_APP_BASE_PATH}/pool/migrate/v1`} component={MigrateV1} />
                                               <Route exact strict path={`${POOL_APP_BASE_PATH}/pool/migrate/v1/:address`} component={MigrateV1Exchange} />
                                           </Suspense>
